@@ -4,8 +4,7 @@
 #ifndef LOVOK_FILE_TYPE_BOX_H
 #define LOVOK_FILE_TYPE_BOX_H
 
-class FileTypeBox : public box
-{
+class FileTypeBox : public box {
 public:
     uint32_t major_brand;
     uint32_t minor_version;

@@ -6,8 +6,7 @@
 
 #include <string>
 
-class box
-{
+class box {
 public:
     int size;
     std::string name;
