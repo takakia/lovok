@@ -25,9 +25,9 @@ public:
     // The number of entries in the entries table
     uint32_t entry_count;
     // Array of entries
-    std::vector <Entry> entries;
+    std::vector<Entry> entries;
 
-    SampleToChunkBox(int s, std::string n, uint32_t ec, std::vector <Entry> e) {
+    SampleToChunkBox(int s, std::string n, uint32_t ec, std::vector<Entry> e) {
         size = s;
         name = std::move(n);
         entry_count = ec;
