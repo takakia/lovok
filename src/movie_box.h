@@ -4,7 +4,7 @@
 #ifndef LOVOK_MOVIE_BOX_H
 #define LOVOK_MOVIE_BOX_H
 
-class MovieBox : public box {
+class MovieBox : public Box {
 public:
 
     MovieBox(int s, std::string n) {

@@ -4,7 +4,7 @@
 #ifndef LOVOK_FULL_BOX_H
 #define LOVOK_FULL_BOX_H
 
-class FullBox : public box {
+class FullBox : public Box {
 public:
     uint8_t version;
     unsigned int flags : 24;
