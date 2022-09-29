@@ -46,10 +46,10 @@ class MovieFragmentBox : public Box {
     MovieFragmentHeaderBox mfhd;
     std::vector<TrackFragmentHeaderBox> tfhd;
 
-    MovieFragmentBox(int s, std::string n, MovieFragmentHeaderBox m, std::vector<TrackFragmentHeaderBox> t) {
+    MovieFragmentBox(int s, std::string n, MovieFragmentHeaderBox m,
+                     std::vector<TrackFragmentHeaderBox> t) : mfhd(std::move(m)) {
         size = s;
         name = std::move(n);
-        mfhd = std::move(m);
         tfhd = std::move(t);
     }
 };
