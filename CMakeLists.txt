@@ -3,6 +3,7 @@ project(lovok)
 
 set(CMAKE_CXX_STANDARD 14)
 
+add_executable(test_app_exec src/app/test_app.cpp)
 
 add_library(lovok
             src/lovok.cpp
@@ -24,4 +25,6 @@ add_library(lovok
             src/movie_fragment_random_access_box.h 
             src/movie_fragment_random_access_box.cpp 
             src/movie_header_box.h 
-            src/movie_header_box.cpp)
+            src/movie_header_box.cpp
+            src/app/test_app.cpp
+            src/io/file_io.c)
