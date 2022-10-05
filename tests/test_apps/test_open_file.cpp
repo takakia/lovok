@@ -9,8 +9,6 @@ int main(int argc, char **argv) {
     if (!wrapper) {
         std::cout << "Failed to open file" << std::endl;
         return 1;
-    } else {
-        std::cout << "foo" << std::endl;
     }
     std::cout << wrapper << std::endl;
     FileWrapper_Close(wrapper);
