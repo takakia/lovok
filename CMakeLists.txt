@@ -24,7 +24,11 @@ add_library(lovok
             src/boxes/movie_box.cpp
             src/boxes/movie_fragment_random_access_box.h
             src/boxes/movie_fragment_random_access_box.cpp
+            src/boxes/movie_fragment_box.h
+            src/boxes/movie_fragment_box.cpp
             src/boxes/movie_header_box.h
             src/boxes/movie_header_box.cpp
+            src/boxes/progressive_download_info_box.h
+            src/boxes/progressive_download_info_box.cpp
             src/app/test_app.cpp
             src/io/file_io.c)
