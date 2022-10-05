@@ -6,13 +6,13 @@
 
 #include <string>
 
-class box {
+class Box {
 public:
     int size;
     std::string name;
 
-    box() {}
-    explicit box(const std::string& n) { name = n; }
+    Box() {}
+    explicit Box(const std::string& n) { name = n; }
 };
 
 #endif //LOVOK_BOX_H
