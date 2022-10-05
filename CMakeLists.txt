@@ -11,8 +11,4 @@ add_subdirectory(tests)
 
 add_subdirectory(libs)
 
-#include_directories(${CMAKE_CURRENT_SOURCE_DIR}/libs/io)
-#include(${CMAKE_CURRENT_SOURCE_DIR}/libs/io/file_io.h)
-
-
 enable_testing()
