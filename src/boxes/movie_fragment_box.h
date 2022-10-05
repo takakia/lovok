@@ -1,6 +1,6 @@
 #include <utility>
 #include <vector>
-#include "boxes/box.h"
+#include "box.h"
 
 #ifndef LOVOK_MOVIE_FRAGMENT_BOX_H
 #define LOVOK_MOVIE_FRAGMENT_BOX_H

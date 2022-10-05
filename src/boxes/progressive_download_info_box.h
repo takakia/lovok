@@ -1,4 +1,4 @@
-#include "boxes/box.h"
+#include "box.h"
 
 #ifndef LOVOK_PROGRESSIVE_DOWNLOAD_INFO_BOX_H
 #define LOVOK_PROGRESSIVE_DOWNLOAD_INFO_BOX_H

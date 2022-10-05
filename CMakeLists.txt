@@ -8,10 +8,10 @@ add_executable(test_app_exec src/app/test_app.cpp)
 add_library(lovok
             src/lovok.cpp
             src/lovok_handle_internal.cpp
-            src/progressive_download_info_box.cpp
-            src/progressive_download_info_box.h
-            src/movie_fragment_box.cpp
-            src/movie_fragment_box.h
+            src/boxes/progressive_download_info_box.cpp
+            src/boxes/progressive_download_info_box.h
+            src/boxes/movie_fragment_box.cpp
+            src/boxes/movie_fragment_box.h
             src/boxes/box.cpp
             src/boxes/box.h
             src/boxes/file_type_box.cpp
