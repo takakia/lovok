@@ -12,7 +12,7 @@ struct FileCallbackOperations {
 
 struct FileWrapper {
     const struct FileCallbackOperations *ops;
-} *FILE_WRAPPER;
+};
 
 ssize_t FileWrapper_Read(struct FileWrapper *wrap, void *buf, ssize_t len) {
     return wrap->ops->read(wrap, buf, len);

@@ -29,8 +29,6 @@ add_library(lovok
         boxes/time_to_sample_box.cpp
         tests/test_apps/test_open_file.cpp
         app/test_app.cpp
-        io/file_io.c
-        io/file_io.h
+        ../libs/io/file_io.c
+        ../libs/io/file_io.h
         )
-
-
