@@ -3,19 +3,19 @@
 
 #include "box.h"
 
-class media_data_box: public box
+class MediaDataBox: public Box
 {
 private:
     uint8_t* data;
 public:
-    media_data_box(): box("mdat") {
+    MediaDataBox(): Box("mdat") {
         data = nullptr;
     }
-    media_data_box(uint8_t* d): box("mdat") {
+    MediaDataBox(uint8_t* d): Box("mdat") {
         data = d;//temporary not copied
     }
     
-    virtual ~media_data_box() {
+    virtual ~MediaDataBox() {
         // delete[] data;
     };
 };
