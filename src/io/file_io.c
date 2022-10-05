@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "file_io.h"
+
 struct FileCallbackOperations {
     ssize_t (*read) (void *context, void *buffer, size_t len);
     int (*seek) (void *context, uint64_t pos);
@@ -10,7 +12,7 @@ struct FileCallbackOperations {
 
 struct FileWrapper {
     const struct FileCallbackOperations *ops;
-};
+} *FILE_WRAPPER;
 
 ssize_t FileWrapper_Read(struct FileWrapper *wrap, void *buf, ssize_t len) {
     return wrap->ops->read(wrap, buf, len);

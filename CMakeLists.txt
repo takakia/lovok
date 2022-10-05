@@ -35,4 +35,4 @@ add_library(lovok
             src/boxes/time_to_sample_box.h
             src/boxes/time_to_sample_box.cpp
             src/app/test_app.cpp
-            src/io/file_io.c)
+            src/io/file_io.c src/io/file_io.h tests/test_apps/test_open_file.cpp)
