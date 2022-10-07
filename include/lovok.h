@@ -1,5 +1,6 @@
 #ifndef LOVOK_LOVOK_H
 #define LOVOK_LOVOK_H
+
 #if defined(__cplusplus)
 extern "C" {
 #endif
