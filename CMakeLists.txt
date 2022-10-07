@@ -30,5 +30,9 @@ add_library(lovok
             src/boxes/movie_fragment_random_access_box.cpp
             src/boxes/movie_header_box.h
             src/boxes/movie_header_box.cpp
+            src/boxes/media_data_box.h
+            src/boxes/media_data_box.cpp
+            src/boxes/time_to_sample_box.h
+            src/boxes/time_to_sample_box.cpp
             src/app/test_app.cpp
             src/io/file_io.c)
