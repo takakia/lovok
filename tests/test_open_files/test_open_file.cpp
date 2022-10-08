@@ -1,7 +1,6 @@
 #include <iostream>
 #include "io/file_io.h"
 
-
 int main(int argc, char **argv) {
     const char *name = "test_data/test_recording0.mp4";
     std::cout << name << std::endl;
