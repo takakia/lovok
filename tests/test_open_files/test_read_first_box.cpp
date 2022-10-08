@@ -1,5 +1,6 @@
 #include <iostream>
 #include "io/file_io.h"
+#include <cstring>
 
 
 int main(int argc, char **argv) {
@@ -13,11 +14,16 @@ int main(int argc, char **argv) {
 
     char buffer[8];
     FileWrapper_Read(wrapper, buffer, sizeof(buffer));
-    char *boxName = buffer + 4;
-    std::cout << boxName << std::endl;
-
-
-    std::cout << wrapper << std::endl;
+    char box_name[5] = "\0";
+    const char * ftyp = "ftyp";
+    std::cout << sizeof box_name << std::endl;
+    snprintf(box_name, sizeof box_name, buffer + 4);
+    if (strncmp(box_name, ftyp, sizeof box_name) != 0) {
+        std::cout << ftyp  << " != " << box_name << std::endl;
+        FileWrapper_Close(wrapper);
+        return 1;
+    }
+    std::cout << box_name << std::endl;
     FileWrapper_Close(wrapper);
 
     return 0;
