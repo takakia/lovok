@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "file_io.h"
+
 struct FileCallbackOperations {
     ssize_t (*read) (void *context, void *buffer, size_t len);
     int (*seek) (void *context, uint64_t pos);
