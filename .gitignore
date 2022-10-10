@@ -4,5 +4,7 @@ cmake-build-debug/
 build/
 .vscode/
 Testing/
-build/
 .DS_Store
+.cache/
+compile_commands.json
+tags
