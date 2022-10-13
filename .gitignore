@@ -8,3 +8,5 @@ Testing/
 .cache/
 compile_commands.json
 tags
+*.vim
+*.swp

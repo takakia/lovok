@@ -29,4 +29,4 @@ add_library(lovok
         boxes/time_to_sample_box.cpp
         ../libs/io/file_io.c
         ../libs/io/file_io.h
-        )
+        lovok_handle_internal.h)

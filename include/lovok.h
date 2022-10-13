@@ -7,7 +7,9 @@ extern "C" {
 
 typedef struct LovokHandleInternal *LOVOK_HANDLE;
 
-LOVOK_HANDLE Lovok_create();
+LOVOK_HANDLE Lovok_create(const char *name);
+
+bool valid_mp4(LOVOK_HANDLE);
 
 void Lovok_destroy(LOVOK_HANDLE);
 
