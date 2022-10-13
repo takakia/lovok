@@ -1,11 +1,12 @@
+#include <stdint.h>
+#include <stdio.h>
+
 #ifndef LOVOK_FILE_IO_H
 #define LOVOK_FILE_IO_H
 
 #if defined(__cplusplus)
 extern "C" {
 #endif
-
-struct FileWrapper *FILE_WRAPPER;
 
 struct FileWrapper *FileWrapper_Open(const char *name);
 ssize_t FileWrapper_Read(struct FileWrapper *wrap, void *buf, ssize_t len);

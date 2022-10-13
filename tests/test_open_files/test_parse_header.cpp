@@ -1,0 +1,16 @@
+#include <iostream>
+#include "io/file_io.h"
+#include "lovok.h"
+
+int main(int argc, char **argv) {
+    const char *name = "test_data/test_recording0.mp4";
+    std::cout << "Parsing" << name << std::endl;
+    LOVOK_HANDLE handle = Lovok_create(name);
+    bool valid = valid_mp4(handle);
+    if (!valid) {
+        std::cout << "Error validating mp4 file" << std::endl;
+        return 1;
+    }
+    Lovok_destroy(handle);
+    return 0;
+}
