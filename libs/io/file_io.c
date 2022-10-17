@@ -1,6 +1,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "file_io.h"
 
@@ -8,6 +9,7 @@ struct FileCallbackOperations {
     ssize_t (*read) (void *context, void *buffer, size_t len);
     int (*seek) (void *context, uint64_t pos);
     void (*close) (void *context);
+    bool (*end) (void *context);
 };
 
 struct FileWrapper {
@@ -50,10 +52,15 @@ static void fopen_close(void *contextp) {
     free(context);
 }
 
+static bool pread_end(void * contextp) {
+    
+}
+
 static const struct FileCallbackOperations fopen_ops =
         {fopen_read,
          fopen_seek,
          fopen_close,
+         pread_end,
          };
 
 struct FileWrapper *FileWrapper_Open(const char *name) {

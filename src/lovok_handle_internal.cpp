@@ -1,7 +1,6 @@
 #include "lovok_handle_internal.h"
 #include "io/file_io.h"
 #include "boxes/box.h"
-#include <iostream>
 
 enum LovokStatusCode {
     SUCCESS = 0,
@@ -15,7 +14,7 @@ bool parse_mp4(LOVOK_HANDLE_INTERNAL handle) {
     if (!fileWrapper) {
         return false;
     }
-
+    
     Box header = Box();
     LovokStatusCode parsed = parse_header(fileWrapper, &header);
     if (parsed != SUCCESS) {
@@ -37,7 +36,6 @@ uint32_t box_size(unsigned char s[4]) {
 
 LovokStatusCode parse_header(FileWrapper *fileWrapper, Box *header) {
     unsigned char size[4];
-    ssize_t t = sizeof(size);
     ssize_t read = FileWrapper_Read(fileWrapper, size, sizeof(size));
     if (read != sizeof(size)) {
         return PARSE_ERROR;
