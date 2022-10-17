@@ -8,7 +8,7 @@
 
 class Box {
 public:
-    uint32_t size;
+    uint64_t size;
     std::string name;
 
     Box() {}
