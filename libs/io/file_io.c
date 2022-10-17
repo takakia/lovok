@@ -30,6 +30,10 @@ void FileWrapper_Close(struct FileWrapper *wrap) {
     }
 }
 
+bool FileWrapper_End(struct FileWrapper *wrap) {
+    return wrap->ops->end(wrap);
+}
+
 struct FileWrapper_StdIO {
     struct FileWrapper base;
     FILE *f;
@@ -53,7 +57,12 @@ static void fopen_close(void *contextp) {
 }
 
 static bool pread_end(void * contextp) {
-    
+    struct FileWrapper_StdIO *context = (struct FileWrapper_StdIO*) contextp;
+    int end = feof(context->f);
+    if (end != 0) {
+       return false;
+    }
+    return end; 
 }
 
 static const struct FileCallbackOperations fopen_ops =

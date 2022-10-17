@@ -14,12 +14,23 @@ bool parse_mp4(LOVOK_HANDLE_INTERNAL handle) {
     if (!fileWrapper) {
         return false;
     }
-    
-    Box header = Box();
-    LovokStatusCode parsed = parse_header(fileWrapper, &header);
-    if (parsed != SUCCESS) {
-        FileWrapper_Close(fileWrapper);
-        return false;
+
+    uint64_t byteOffset = 0;
+    while (!FileWrapper_End(fileWrapper)) {
+        Box header = Box();
+        LovokStatusCode parsedHeader = parse_header(fileWrapper, &header);
+        if (parsedHeader != SUCCESS) {
+            FileWrapper_Close(fileWrapper);
+            return false;
+        }
+
+        // seek to next box
+        int err = FileWrapper_Seek(fileWrapper, byteOffset + header.size);
+        if (err != 0) {
+            FileWrapper_Close(fileWrapper);
+            return false;
+        }
+        byteOffset += header.size;
     }
 
     FileWrapper_Close(fileWrapper);
