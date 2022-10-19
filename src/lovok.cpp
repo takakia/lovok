@@ -14,6 +14,6 @@ void Lovok_destroy(LOVOK_HANDLE h) {
     free(h);
 }
 
-bool valid_mp4(LOVOK_HANDLE h) {
-    return parse_mp4(h);
+LovokStatusCode valid_mp4(LOVOK_HANDLE h) {
+    return ParseMp4(h);
 }

@@ -1,15 +1,10 @@
 #include "lovok_handle_internal.h"
 #include "io/file_io.h"
 #include "boxes/box.h"
+#include "../include/lovok.h"
 
-enum LovokStatusCode {
-    SUCCESS = 0,
-    PARSE_ERROR = 1,
-};
 
-LovokStatusCode parse_header(FileWrapper *fileWrapper, Box *header);
-
-uint32_t box_size32(unsigned char s[4]) {
+uint32_t BoxSize32(unsigned char s[4]) {
     uint32_t size = s[3];
     size |= (uint32_t) s[2] << 8;
     size |= (uint32_t) s[1] << 16;
@@ -17,7 +12,7 @@ uint32_t box_size32(unsigned char s[4]) {
     return size;
 }
 
-uint64_t box_size64(unsigned char s[8]) {
+uint64_t BoxSize64(unsigned char s[8]) {
     uint64_t size = s[7];
     size |= (uint64_t) s[6] << 8;
     size |= (uint64_t) s[5] << 16;
@@ -29,35 +24,7 @@ uint64_t box_size64(unsigned char s[8]) {
     return size;
 }
 
-bool parse_mp4(LOVOK_HANDLE_INTERNAL handle) {
-    FileWrapper *fileWrapper = FileWrapper_Open(handle->name);
-    if (!fileWrapper) {
-        return false;
-    }
-    uint64_t length = FileWrapper_Size(fileWrapper);
-    uint64_t byteOffset = 0;
-    while (length > 0) {
-        Box header = Box();
-        LovokStatusCode parsedHeader = parse_header(fileWrapper, &header);
-        if (parsedHeader != SUCCESS) {
-            FileWrapper_Close(fileWrapper);
-            return false;
-        }
-
-        // seek to next box
-        int err = FileWrapper_Seek(fileWrapper, byteOffset + header.size);
-        if (err != 0) {
-            FileWrapper_Close(fileWrapper);
-            return false;
-        }
-        byteOffset += header.size;
-        length -= header.size;
-    }
-    FileWrapper_Close(fileWrapper);
-    return true;
-}
-
-LovokStatusCode parse_header(FileWrapper *fileWrapper, Box *header) {
+LovokStatusCode ParseHeader(FileWrapper *fileWrapper, Box *header) {
     unsigned char size[4];
     ssize_t read = FileWrapper_Read(fileWrapper, size, sizeof(size));
     if (read != sizeof(size)) {
@@ -69,16 +36,53 @@ LovokStatusCode parse_header(FileWrapper *fileWrapper, Box *header) {
         return PARSE_ERROR;
     }
     header->name = std::string(box_name);
-    uint32_t boxSize = box_size32(size);
+    uint32_t boxSize = BoxSize32(size);
     if (boxSize == 1) {
         unsigned char largeSize[8];
         read = FileWrapper_Read(fileWrapper, largeSize, sizeof(largeSize));
         if (read != sizeof(largeSize)) {
             return PARSE_ERROR;
         }
-        header->size = box_size64(largeSize);
+        header->size = BoxSize64(largeSize);
     } else {
         header->size = boxSize;
     }
     return SUCCESS;
 }
+
+LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length) {
+    uint64_t byteOffset = 0;
+    while (length > 0) {
+        Box header = Box();
+        LovokStatusCode parsedHeader = ParseHeader(fileWrapper, &header);
+        if (parsedHeader != SUCCESS) {
+            FileWrapper_Close(fileWrapper);
+            return PARSE_ERROR;
+        }
+
+        // seek to next box
+        int err = FileWrapper_Seek(fileWrapper, byteOffset + header.size);
+        if (err != 0) {
+            FileWrapper_Close(fileWrapper);
+            return PARSE_ERROR;
+        }
+        byteOffset += header.size;
+        length -= header.size;
+    }
+    return SUCCESS;
+}
+
+LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
+    FileWrapper *fileWrapper = FileWrapper_Open(handle->name);
+    if (!fileWrapper) {
+        return PARSE_ERROR;
+    }
+    uint64_t length = FileWrapper_Size(fileWrapper);
+    LovokStatusCode parseResults = ParseBoxes(fileWrapper, length);
+    FileWrapper_Close(fileWrapper);
+    return SUCCESS;
+}
+
+
+
+
