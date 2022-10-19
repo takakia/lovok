@@ -12,3 +12,10 @@ target_link_libraries(test_read_first_box file_io)
 add_test(NAME test_read_first_box COMMAND test_read_first_box)
 set_tests_properties(test_read_first_box PROPERTIES
         WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})
+
+add_executable(test_parse_header test_open_files/test_parse_header.cpp)
+target_link_libraries(test_parse_header file_io)
+target_link_libraries(test_parse_header lovok_internal)
+add_test(NAME test_parse_header COMMAND test_parse_header)
+set_tests_properties(test_parse_header PROPERTIES
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR})

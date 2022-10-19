@@ -1,4 +1,4 @@
-add_library(lovok
+add_library(lovok_internal
         lovok.cpp
         lovok_handle_internal.cpp
         boxes/box.cpp
@@ -27,6 +27,6 @@ add_library(lovok
         boxes/media_data_box.cpp
         boxes/time_to_sample_box.h
         boxes/time_to_sample_box.cpp
-        ../libs/io/file_io.c
-        ../libs/io/file_io.h
-        )
+        lovok_handle_internal.h)
+
+target_link_libraries(lovok_internal file_io)

@@ -5,9 +5,17 @@
 extern "C" {
 #endif
 
+enum LovokStatusCode {
+    SUCCESS = 0,
+    PARSE_ERROR = 1,
+    INVALID_FILE = 2,
+};
+
 typedef struct LovokHandleInternal *LOVOK_HANDLE;
 
-LOVOK_HANDLE Lovok_create();
+LOVOK_HANDLE Lovok_create(const char *name);
+
+LovokStatusCode valid_mp4(LOVOK_HANDLE);
 
 void Lovok_destroy(LOVOK_HANDLE);
 
