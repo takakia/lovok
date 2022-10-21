@@ -8,11 +8,7 @@
 class HandlerBox : public Box {
     uint32_t handler_type;
 
-    HandlerBox(int s, std::string n, uint32_t ht) {
-        size = s;
-        name = std::move(n);
-        handler_type = ht;
-    }
+    HandlerBox(int s, const std::string& n, uint32_t ht) : Box(n, s), handler_type(ht) {}
 };
 
 class MetaBox : public Box {
@@ -21,9 +17,8 @@ class MetaBox : public Box {
     // Handler describing metadata
     HandlerBox handler_box;
 
-    MetaBox(int s, std::string n, std::vector<Box> b, HandlerBox hb) : handler_box(hb) {
-        size = s;
-        name = std::move(n);
+    MetaBox(int s, const std::string& n, std::vector<Box> b, HandlerBox hb) : handler_box(hb), Box(n, s) 
+    {
         boxes = std::move(b);
         handler_box = std::move(hb);
     }

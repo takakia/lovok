@@ -7,10 +7,7 @@
 class MovieBox : public Box {
 public:
 
-    MovieBox(int s, std::string n) {
-        size = s;
-        name = std::move(n);
-    }
+    MovieBox(int s, const std::string& n) : Box(n, s) {}
 };
 
 #endif //LOVOK_MOVIE_BOX_H

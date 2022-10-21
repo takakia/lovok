@@ -10,11 +10,9 @@ public:
     uint32_t minor_version;
     std::vector <uint32_t> compatible_brands;
 
-    FileTypeBox(int s, std::string n, uint32_t mb, uint32_t mv, std::vector <uint32_t> cb) {
-        size = s;
-        name = std::move(n);
-        major_brand = mb;
-        minor_version = mv;
+    FileTypeBox(int s, const std::string& n, uint32_t mb, uint32_t mv, std::vector <uint32_t> cb)
+        : Box(n, s), major_brand(mb), minor_version(mv) 
+    {
         compatible_brands = std::move(cb);
     }
 };

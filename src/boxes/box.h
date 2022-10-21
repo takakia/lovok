@@ -12,7 +12,8 @@ public:
     std::string name;
 
     Box() {}
-    explicit Box(const std::string& n) { name = n; }
+    explicit Box(const std::string& n) : name(n) {}
+    Box(const std::string& n, uint64_t s) : name(n), size(s) {}
 };
 
 #endif //LOVOK_BOX_H
