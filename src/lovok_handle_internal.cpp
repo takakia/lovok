@@ -1,8 +1,10 @@
+#include <functional>
+#include <cstring>
 #include "lovok_handle_internal.h"
 #include "io/file_io.h"
 #include "boxes/box.h"
 #include "../include/lovok.h"
-
+#include "boxes/file_level_boxes.h"
 
 uint32_t BoxSize32(unsigned char s[4]) {
     uint32_t size = s[3];
@@ -35,7 +37,7 @@ LovokStatusCode ParseHeader(FileWrapper *fileWrapper, Box *header) {
     if (read != sizeof(box_name) - 1) {
         return PARSE_ERROR;
     }
-    header->name = std::string(box_name);
+    strncpy(header->name, box_name, 4);
     uint32_t boxSize = BoxSize32(size);
     if (boxSize == 1) {
         unsigned char largeSize[8];
@@ -87,12 +89,14 @@ LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
     LovokStatusCode parseResults = ParseBoxes(fileWrapper, length,
                                               [&fileWrapper] (const Box &header) -> LovokStatusCode {
         // TODO add logic for Moov and other top level boxes
-        return SUCCESS;
+        LovokStatusCode result = SUCCESS;
+        if (!strcmp(header.name, "moov")) {
+            result = ParseMoov(fileWrapper, header.size);
+        } else if (!strcmp(header.name, "moof")) {
+            result = ParseMoof(fileWrapper, header.size);
+        }
+        return result;
     });
     FileWrapper_Close(fileWrapper);
     return parseResults;
 }
-
-
-
-

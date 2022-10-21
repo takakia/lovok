@@ -9,9 +9,9 @@ public:
     uint8_t version;
     unsigned int flags : 24;
 
-    FullBox(int s, std::string n, uint8_t v, unsigned int f) {
+    FullBox(int s, char n[4], uint8_t v, unsigned int f) {
         size = s;
-        name = std::move(n);
+        strncpy(name, n, 4);
         version = v;
         flags = std::move(f);
     }

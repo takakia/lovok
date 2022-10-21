@@ -1,18 +1,16 @@
-//
-//
+#include <string>
+#include <cstring>
+
 #ifndef LOVOK_BOX_H
 #define LOVOK_BOX_H
-
-
-#include <string>
 
 class Box {
 public:
     uint64_t size;
-    std::string name;
+    char name[4];
 
     Box() {}
-    explicit Box(const std::string& n) { name = n; }
+    explicit Box(char n[4]) { strncpy(name, n, 4); }
 };
 
 #endif //LOVOK_BOX_H

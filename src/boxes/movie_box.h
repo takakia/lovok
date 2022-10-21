@@ -4,12 +4,13 @@
 #ifndef LOVOK_MOVIE_BOX_H
 #define LOVOK_MOVIE_BOX_H
 
-class MovieBox : public Box {
+class MoovBox : public Box {
 public:
 
-    MovieBox(int s, std::string n) {
+    MoovBox() {}
+    MoovBox(int s, char n[4]) {
         size = s;
-        name = std::move(n);
+        strncpy(name, n, 4);
     }
 };
 

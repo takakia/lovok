@@ -11,9 +11,9 @@ class SampleSizeBox : public Box {
     // Number of samples in the track (0 means it is the same as the number of entries in the given table)
     uint32_t sample_count;
 
-    SampleSizeBox(int s, std::string n, uint32_t ss, uint32_t sc) {
+    SampleSizeBox(int s, char n[4], uint32_t ss, uint32_t sc) {
         size = s;
-        name = std::move(n);
+        strncpy(name, n, 4);
         sample_size = ss;
         sample_count = sc;
     }
