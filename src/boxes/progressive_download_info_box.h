@@ -8,9 +8,9 @@ public:
     uint32_t rate;
     uint32_t initial_delay;
 
-    ProgressiveDownloadInfoBox(int s, std::string n, uint32_t r, uint32_t d){
+    ProgressiveDownloadInfoBox(int s, char n[4], uint32_t r, uint32_t d){
         size = s;
-        name = std::move(n);
+        strncpy(name, n, 4);
         rate = r;
         initial_delay = d;
     }

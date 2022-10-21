@@ -25,7 +25,7 @@ public:
     int32_t matrix [9] = {0x00010000,0,0,0,0x00010000,0,0,0,0x40000000};
     uint32_t pre_defined = 0;
     uint32_t next_track_ID;
-    MovieHeaderBox(int s, std::string n, uint8_t v, unsigned int f, uint64_t c, uint64_t m, uint32_t t, uint64_t d) : FullBox(s, n, v, f) {
+    MovieHeaderBox(int s, char n[4], uint8_t v, unsigned int f, uint64_t c, uint64_t m, uint32_t t, uint64_t d) : FullBox(s, n, v, f) {
         creation_time = c;
         modification_time = m;
         timescale = t;

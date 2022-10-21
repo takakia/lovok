@@ -10,9 +10,9 @@ class MovieFragmentHeaderBox : public Box {
 public:
     uint32_t sequence_number;
 
-    MovieFragmentHeaderBox(int s, std::string n, uint32_t sn) {
+    MovieFragmentHeaderBox(int s, char n[4], uint32_t sn) {
         size = s;
-        name = std::move(n);
+        strncpy(name, n, 4);
         sequence_number = sn;
     }
 };
@@ -26,10 +26,10 @@ class TrackFragmentHeaderBox : public Box {
     uint32_t default_sample_size;
     uint32_t default_sample_flags;
 
-    TrackFragmentHeaderBox(int s, std::string n, uint32_t tid, uint32_t b=9999,uint32_t si=9999,
+    TrackFragmentHeaderBox(int s, char n[4], uint32_t tid, uint32_t b=9999,uint32_t si=9999,
                            uint32_t dsd=9999, uint32_t dss=9999, uint32_t dsf=9999) {
         size = s;
-        name = std::move(n);
+        strncpy(name, n, 4);
         track_id = tid;
         base_data_offset = b;
         sample_description_index = si;
@@ -46,10 +46,10 @@ class MovieFragmentBox : public Box {
     MovieFragmentHeaderBox mfhd;
     std::vector<TrackFragmentHeaderBox> tfhd;
 
-    MovieFragmentBox(int s, std::string n, MovieFragmentHeaderBox m,
+    MovieFragmentBox(int s, char n[4], MovieFragmentHeaderBox m,
                      std::vector<TrackFragmentHeaderBox> t) : mfhd(std::move(m)) {
         size = s;
-        name = std::move(n);
+        strncpy(name, n, 4);
         tfhd = std::move(t);
     }
 };

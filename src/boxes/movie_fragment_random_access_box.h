@@ -7,9 +7,9 @@
 class MovieFragmentRandomAccessBox : public Box {
 public:
 
-    MovieFragmentRandomAccessBox(int s, std::string n) {
+    MovieFragmentRandomAccessBox(int s, char n[4]) {
         size = s;
-        name = std::move(n);
+        strncpy(name, n, 4);
     }
 };
 
