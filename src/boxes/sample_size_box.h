@@ -11,13 +11,7 @@ class SampleSizeBox : public Box {
     // Number of samples in the track (0 means it is the same as the number of entries in the given table)
     uint32_t sample_count;
 
-    SampleSizeBox(int s, char n[4], uint32_t ss, uint32_t sc) {
-        size = s;
-        strncpy(name, n, 4);
-        sample_size = ss;
-        sample_count = sc;
-    }
-
+    SampleSizeBox(int s, const std::string& n, uint32_t ss, uint32_t sc) : Box(n, s), sample_size(ss), sample_count(sc) {}
 };
 
 #endif //LOVOK_SAMPLE_SIZE_BOX_H

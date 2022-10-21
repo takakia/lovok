@@ -10,7 +10,9 @@ public:
     char name[5];
 
     Box() {}
-    explicit Box(char n[4]) { strncpy(name, n, 4); }
+
+    explicit Box(const std::string& n) : name(n) {}
+    Box(const std::string& n, uint64_t s) : name(n), size(s) {}
 };
 
 #endif //LOVOK_BOX_H

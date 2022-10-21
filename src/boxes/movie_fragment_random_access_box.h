@@ -7,10 +7,7 @@
 class MovieFragmentRandomAccessBox : public Box {
 public:
 
-    MovieFragmentRandomAccessBox(int s, char n[4]) {
-        size = s;
-        strncpy(name, n, 4);
-    }
+    MovieFragmentRandomAccessBox(int s, const std::string& n) : Box(n, s) {}
 };
 
 #endif //LOVOK_MOVIE_FRAGMENT_RANDOM_ACCESS_BOX_H

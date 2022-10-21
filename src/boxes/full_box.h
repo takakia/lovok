@@ -9,10 +9,9 @@ public:
     uint8_t version;
     unsigned int flags : 24;
 
-    FullBox(int s, char n[4], uint8_t v, unsigned int f) {
-        size = s;
-        strncpy(name, n, 4);
-        version = v;
+    FullBox(int s, const std::string& n, uint8_t v, unsigned int f)
+        : Box(n, s), version(v) 
+    {
         flags = std::move(f);
     }
 };

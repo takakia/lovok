@@ -11,7 +11,7 @@ public:
     MediaDataBox(): Box("mdat") {
         data = nullptr;
     }
-    MediaDataBox(uint8_t* d): Box("mdat") {
+    explicit MediaDataBox(uint8_t* d): Box("mdat") {
         data = d;//temporary not copied
     }
     

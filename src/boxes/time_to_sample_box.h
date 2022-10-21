@@ -7,9 +7,7 @@ class TimeToSampleBox : public FullBox {
 private:
     uint32_t entry_count;
 public:
-    TimeToSampleBox(int s, char n[4], const uint32_t ec) : FullBox(s, n, 0, 0) {
-        entry_count = ec;
-    }
+    TimeToSampleBox(int s, const std::string& boxtype, const uint32_t ec) : FullBox(s, boxtype, 0, 0), entry_count(ec) {}
     
     virtual ~TimeToSampleBox() {}
 };
