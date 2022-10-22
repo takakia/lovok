@@ -33,6 +33,8 @@ add_library(lovok_internal
         boxes/moov_sub_boxes.h
         boxes/moov_sub_boxes.cpp
         boxes/trak_sub_boxes.cpp
-        boxes/trak_sub_boxes.h)
+        boxes/trak_sub_boxes.h
+        boxes/edts_sub_boxes.cpp
+        boxes/edts_sub_boxes.h)
 
 target_link_libraries(lovok_internal file_io)
