@@ -31,6 +31,8 @@ add_library(lovok_internal
         boxes/file_level_boxes.h
         boxes/file_level_boxes.cpp
         boxes/moov_sub_boxes.h
-        boxes/moov_sub_boxes.cpp)
+        boxes/moov_sub_boxes.cpp
+        boxes/trak_sub_boxes.cpp
+        boxes/trak_sub_boxes.h)
 
 target_link_libraries(lovok_internal file_io)
