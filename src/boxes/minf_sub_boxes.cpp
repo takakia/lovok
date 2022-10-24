@@ -1,5 +1,6 @@
 #include "../lovok_handle_internal.h"
 #include "minf_sub_boxes.h"
+#include "dinf_sub_boxes.h"
 
 LovokStatusCode ParseVmhd(FileWrapper * fileWrapper, uint64_t length) {
     return SUCCESS;
@@ -27,8 +28,16 @@ LovokStatusCode ParseNmhd(FileWrapper * fileWrapper, uint64_t length) {
 }
 
 LovokStatusCode ParseDinf(FileWrapper * fileWrapper, uint64_t length) {
-    return SUCCESS;
-    // todo if this is involved in an exploit
+    LovokStatusCode parseResults = ParseBoxes(fileWrapper,
+                                              length,
+                                              [&fileWrapper] (const Box &header) -> LovokStatusCode {
+          LovokStatusCode result = SUCCESS;
+          if (!strcmp(header.name, "dref")) {
+              result = ParseDref(fileWrapper, header.size);
+          }
+          return result;
+      });
+    return parseResults;
 }
 
 LovokStatusCode ParseStbl(FileWrapper * fileWrapper, uint64_t length) {
