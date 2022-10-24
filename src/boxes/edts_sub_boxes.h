@@ -7,6 +7,6 @@
 #ifndef LOVOK_EDTS_SIB_BOXES_H
 #define LOVOK_EDTS_SIB_BOXES_H
 
-LovokStatusCode ParseElst(FileWrapper *, uint64_t);
+LovokStatusCode ParseElst(FileWrapper *, uint64_t, uint64_t);
 
 #endif //LOVOK_EDTS_SIB_BOXES_H

@@ -7,12 +7,12 @@
 #ifndef LOVOK_MOOV_SUB_BOXES_H
 #define LOVOK_MOOV_SUB_BOXES_H
 
-LovokStatusCode ParseTrak(FileWrapper *, uint64_t);
+LovokStatusCode ParseTrak(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseMvhd(FileWrapper *, uint64_t);
+LovokStatusCode ParseMvhd(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseMeta(FileWrapper *, uint64_t);
+LovokStatusCode ParseMeta(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseMvex(FileWrapper *, uint64_t);
+LovokStatusCode ParseMvex(FileWrapper *, uint64_t, uint64_t);
 
 #endif //LOVOK_MOOV_SUB_BOXES_H

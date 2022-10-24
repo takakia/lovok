@@ -7,6 +7,6 @@
 #ifndef LOVOK_DINF_SUB_BOXES_H
 #define LOVOK_DINF_SUB_BOXES_H
 
-LovokStatusCode ParseDref(FileWrapper *, uint64_t);
+LovokStatusCode ParseDref(FileWrapper *, uint64_t, uint64_t);
 
 #endif //LOVOK_DINF_SUB_BOXES_H
