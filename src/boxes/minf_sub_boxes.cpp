@@ -31,7 +31,7 @@ LovokStatusCode ParseDinf(FileWrapper * fileWrapper, uint64_t length) {
     // todo if this is involved in an exploit
 }
 
-LovokStatusCode ParseDref(FileWrapper * fileWrapper, uint64_t length) {
+LovokStatusCode ParseStbl(FileWrapper * fileWrapper, uint64_t length) {
     return SUCCESS;
     // todo if this is involved in an exploit
 }

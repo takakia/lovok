@@ -34,8 +34,8 @@ LovokStatusCode ParseMinf(FileWrapper * fileWrapper, uint64_t length) {
               result = ParseNmhd(fileWrapper, header.size);
           } else if (!strcmp(header.name, "dinf")) {
               result = ParseDinf(fileWrapper, header.size);
-          } else if (!strcmp(header.name, "dref")) {
-              result = ParseDref(fileWrapper, header.size);
+          } else if (!strcmp(header.name, "stbl")) {
+              result = ParseStbl(fileWrapper, header.size);
           }
           return result;
       });
