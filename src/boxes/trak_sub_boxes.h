@@ -15,7 +15,7 @@ LovokStatusCode ParseTrgr(FileWrapper *, uint64_t, uint64_t);
 
 LovokStatusCode ParseEdts(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseMeta(FileWrapper *, uint64_t, uint64_t); // Redeclare here? Since it is a different level metadata box
+//LovokStatusCode ParseMeta(FileWrapper *, uint64_t, uint64_t); // Redeclare here? Since it is a different level metadata box
 
 LovokStatusCode ParseMdia(FileWrapper *, uint64_t, uint64_t);
 

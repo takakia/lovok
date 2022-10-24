@@ -34,10 +34,10 @@ LovokStatusCode ParseEdts(FileWrapper * fileWrapper, uint64_t length, uint64_t b
     return parseResults;
 }
 
-LovokStatusCode ParseMeta(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) { // Redeclare here? Since it is a different level metadata box
-    return SUCCESS;
-    // todo if this is involved in an exploit
-}
+//LovokStatusCode ParseMeta(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) { // Redeclare here? Since it is a different level metadata box
+//    return SUCCESS;
+//    // todo if this is involved in an exploit
+//}
 
 LovokStatusCode ParseMdia(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
     byteOffset += 8;
