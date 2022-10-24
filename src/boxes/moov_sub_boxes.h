@@ -13,4 +13,6 @@ LovokStatusCode ParseMvhd(FileWrapper *, uint64_t);
 
 LovokStatusCode ParseMeta(FileWrapper *, uint64_t);
 
+LovokStatusCode ParseMvex(FileWrapper *, uint64_t);
+
 #endif //LOVOK_MOOV_SUB_BOXES_H

@@ -14,6 +14,8 @@ LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length) {
             result = ParseMvhd(fileWrapper, header.size);
         } else if (!strcmp(header.name, "meta")) {
             result = ParseMeta(fileWrapper, header.size);
+        } else if (!strcmp(header.name, "mvex")) {
+            result = ParseMvex(fileWrapper, header.size);
         }
         return result;
     });

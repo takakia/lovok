@@ -43,6 +43,8 @@ add_library(lovok_internal
         boxes/dinf_sub_boxes.cpp
         boxes/dinf_sub_boxes.h
         boxes/stbl_sub_boxes.cpp
-        boxes/stbl_sub_boxes.h)
+        boxes/stbl_sub_boxes.h
+        boxes/mvex_sub_boxes.cpp
+        boxes/mvex_sub_boxes.h)
 
 target_link_libraries(lovok_internal file_io)
