@@ -7,7 +7,7 @@
 class Box {
 public:
     uint64_t size;
-    char name[4];
+    char name[5];
 
     Box() {}
     explicit Box(char n[4]) { strncpy(name, n, 4); }

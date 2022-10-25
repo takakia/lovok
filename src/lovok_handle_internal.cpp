@@ -37,7 +37,7 @@ LovokStatusCode ParseHeader(FileWrapper *fileWrapper, Box *header) {
     if (read != sizeof(box_name) - 1) {
         return PARSE_ERROR;
     }
-    strncpy(header->name, box_name, 4);
+    strncpy(header->name, box_name, 5);
     uint32_t boxSize = BoxSize32(size);
     if (boxSize == 1) {
         unsigned char largeSize[8];
@@ -52,8 +52,7 @@ LovokStatusCode ParseHeader(FileWrapper *fileWrapper, Box *header) {
     return SUCCESS;
 }
 
-LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, const std::function<LovokStatusCode(const Box &)> &f) {
-    uint64_t byteOffset = 0;
+LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset, const std::function<LovokStatusCode(const Box &, uint64_t)> &f) {
     while (length > 0) {
         Box header = Box();
         LovokStatusCode parsedHeader = ParseHeader(fileWrapper, &header);
@@ -63,7 +62,7 @@ LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, const std:
         }
 
         // Parse Boxes within this box with function f
-        LovokStatusCode boxResult = f(header);
+        LovokStatusCode boxResult = f(header, byteOffset);
         if (boxResult != SUCCESS) {
             FileWrapper_Close(fileWrapper);
             return boxResult;
@@ -86,14 +85,15 @@ LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
         return PARSE_ERROR;
     }
     uint64_t length = FileWrapper_Size(fileWrapper);
-    LovokStatusCode parseResults = ParseBoxes(fileWrapper, length,
-                                              [&fileWrapper] (const Box &header) -> LovokStatusCode {
+    uint64_t byteOffset = 0;
+    LovokStatusCode parseResults = ParseBoxes(fileWrapper, length, byteOffset,
+                                              [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
         // TODO add logic for Moov and other top level boxes
         LovokStatusCode result = SUCCESS;
         if (!strcmp(header.name, "moov")) {
-            result = ParseMoov(fileWrapper, header.size);
+            result = ParseMoov(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "moof")) {
-            result = ParseMoof(fileWrapper, header.size);
+            result = ParseMoof(fileWrapper, header.size, byteOffset);
         }
         return result;
     });
