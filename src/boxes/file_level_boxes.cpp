@@ -2,6 +2,7 @@
 #include "movie_box.h"
 #include "../lovok_handle_internal.h"
 #include "moov_sub_boxes.h"
+#include "moof_sub_boxes.h"
 
 LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
     byteOffset += 8;
@@ -26,6 +27,21 @@ LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseMoof(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
-    //todo do the real thing
+    byteOffset += 8;
+    length -= 8;
+    LovokStatusCode parseResults = ParseBoxes(fileWrapper,
+                                              length,
+                                              byteOffset,
+                                              [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
+          LovokStatusCode result = SUCCESS;
+          if (!strcmp(header.name, "mfhd")) {
+              result = ParseMfhd(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "meta")) {
+              result = ParseMeta(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "traf")) {
+              result = ParseTraf(fileWrapper, header.size, byteOffset);
+          }
+          return result;
+      });
+    return parseResults;
 }
