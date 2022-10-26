@@ -9,7 +9,7 @@ public:
     uint8_t version;
     unsigned int flags : 24;
 
-    FullBox(int s, char n[4], uint8_t v, unsigned int f)
+    FullBox(int s, char n[BOX_NAME_BUFFER_LEN], uint8_t v, unsigned int f)
         : Box(n, s), version(v) 
     {
         flags = std::move(f);
