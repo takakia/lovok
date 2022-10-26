@@ -6,8 +6,8 @@
 
 class MoovBox : public Box {
 public:
-
-    MoovBox(int s, const std::string& n) : Box(n, s) {}
+	MoovBox() {}
+    MoovBox(int s, char n[4]) : Box(n, s) {}
 };
 
 #endif //LOVOK_MOVIE_BOX_H
