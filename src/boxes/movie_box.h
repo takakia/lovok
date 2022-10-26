@@ -7,11 +7,8 @@
 class MoovBox : public Box {
 public:
 
-    MoovBox() {}
-    MoovBox(int s, char n[4]) {
-        size = s;
-        strncpy(name, n, 4);
-    }
+	MoovBox() {}
+    MovieBox(int s, char n[4]) : Box(n, s) {}
 };
 
 #endif //LOVOK_MOVIE_BOX_H

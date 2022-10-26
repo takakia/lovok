@@ -10,7 +10,8 @@ public:
     char name[5];
 
     Box() {}
-    explicit Box(char n[4]) { strncpy(name, n, 4); }
+    explicit Box(char n[4]) {}
+    Box(char n[4], uint64_t s) : size(s) {}
 };
 
 #endif //LOVOK_BOX_H
