@@ -17,7 +17,7 @@ LovokStatusCode ParseSthd(FileWrapper *, uint64_t, uint64_t);
 
 LovokStatusCode ParseNmhd(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseDinf(FileWrapper *, uint64_t, uint64_t);
+LovokStatusCode ParseMinfDinf(FileWrapper *, uint64_t, uint64_t);
 
 LovokStatusCode ParseStbl(FileWrapper *, uint64_t, uint64_t);
 
