@@ -23,7 +23,7 @@ public:
     // Array of entries
     std::vector<Entry> entries;
 
-    SampleToChunkBox(int s, char n[4], uint32_t ec, std::vector<Entry> e) 
+    SampleToChunkBox(int s, char n[BOX_NAME_BUFFER_LEN], uint32_t ec, std::vector<Entry> e) 
         : Box(n, s), entry_count(ec) 
     {
         entries = std::move(e);

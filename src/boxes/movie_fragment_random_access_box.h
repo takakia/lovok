@@ -7,7 +7,7 @@
 class MovieFragmentRandomAccessBox : public Box {
 public:
 
-    MovieFragmentRandomAccessBox(int s, char n[4]) : Box(n, s) {}
+    MovieFragmentRandomAccessBox(int s, char n[BOX_NAME_BUFFER_LEN]) : Box(n, s) {}
 };
 
 #endif //LOVOK_MOVIE_FRAGMENT_RANDOM_ACCESS_BOX_H

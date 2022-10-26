@@ -26,7 +26,7 @@ public:
     uint32_t pre_defined = 0;
     uint32_t next_track_ID;
 
-    MovieHeaderBox(int s, char n[4], uint8_t v, unsigned int f, uint64_t c, uint64_t m, uint32_t t, uint64_t d) 
+    MovieHeaderBox(int s, char n[BOX_NAME_BUFFER_LEN], uint8_t v, unsigned int f, uint64_t c, uint64_t m, uint32_t t, uint64_t d) 
         : FullBox(s, n, v, f), creation_time(c), modification_time(m), timescale(t), duration(d) {}
 };
 
