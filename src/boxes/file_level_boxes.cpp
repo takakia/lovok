@@ -17,7 +17,7 @@ LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t by
         } else if (!strcmp(header.name, "mvhd")) {
             result = ParseMvhd(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "meta")) {
-            result = ParseMeta(fileWrapper, header.size, byteOffset);
+            result = ParseMoovMeta(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "mvex")) {
             result = ParseMvex(fileWrapper, header.size, byteOffset);
         }
@@ -37,7 +37,7 @@ LovokStatusCode ParseMoof(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           if (!strcmp(header.name, "mfhd")) {
               result = ParseMfhd(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "meta")) {
-              result = ParseMeta(fileWrapper, header.size, byteOffset);
+              result = ParseMoofMeta(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "traf")) {
               result = ParseTraf(fileWrapper, header.size, byteOffset);
           }

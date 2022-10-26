@@ -47,6 +47,8 @@ add_library(lovok_internal
         boxes/mvex_sub_boxes.cpp
         boxes/mvex_sub_boxes.h
         boxes/moof_sub_boxes.cpp
-        boxes/moof_sub_boxes.h)
+        boxes/moof_sub_boxes.h
+        boxes/traf_sub_boxes.cpp
+        boxes/traf_sub_boxes.h)
 
 target_link_libraries(lovok_internal file_io)

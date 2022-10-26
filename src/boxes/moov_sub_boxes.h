@@ -11,7 +11,7 @@ LovokStatusCode ParseTrak(FileWrapper *, uint64_t, uint64_t);
 
 LovokStatusCode ParseMvhd(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseMeta(FileWrapper *, uint64_t, uint64_t);
+LovokStatusCode ParseMoovMeta(FileWrapper *, uint64_t, uint64_t);
 
 LovokStatusCode ParseMvex(FileWrapper *, uint64_t, uint64_t);
 
