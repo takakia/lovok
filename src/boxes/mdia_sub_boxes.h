@@ -9,7 +9,7 @@
 
 LovokStatusCode ParseMdhd(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseHdlr(FileWrapper *, uint64_t, uint64_t);
+LovokStatusCode ParseMdiaHdlr(FileWrapper *, uint64_t, uint64_t);
 
 LovokStatusCode ParseElng(FileWrapper *, uint64_t, uint64_t);
 

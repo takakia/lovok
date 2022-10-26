@@ -35,14 +35,14 @@ LovokStatusCode ParseStdp(FileWrapper *, uint64_t, uint64_t);
 
 LovokStatusCode ParseSdtp(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseSbgp(FileWrapper *, uint64_t, uint64_t);
+LovokStatusCode ParseStblSbgp(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseSgpd(FileWrapper *, uint64_t, uint64_t);
+LovokStatusCode ParseStblSgpd(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseSubs(FileWrapper *, uint64_t, uint64_t);
+LovokStatusCode ParseStblSubs(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseSaiz(FileWrapper *, uint64_t, uint64_t);
+LovokStatusCode ParseStblSaiz(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseSaio(FileWrapper *, uint64_t, uint64_t);
+LovokStatusCode ParseStblSaio(FileWrapper *, uint64_t, uint64_t);
 
 #endif //LOVOK_STBL_SUB_BOXES_H

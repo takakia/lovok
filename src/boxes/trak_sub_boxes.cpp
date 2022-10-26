@@ -34,10 +34,10 @@ LovokStatusCode ParseEdts(FileWrapper * fileWrapper, uint64_t length, uint64_t b
     return parseResults;
 }
 
-//LovokStatusCode ParseMeta(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) { // Redeclare here? Since it is a different level metadata box
-//    return SUCCESS;
-//    // todo if this is involved in an exploit
-//}
+LovokStatusCode ParseTrakMeta(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) { // Redeclare here? Since it is a different level metadata box
+    return SUCCESS;
+    // todo if this is involved in an exploit
+}
 
 LovokStatusCode ParseMdia(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
     byteOffset += 8;
@@ -50,7 +50,7 @@ LovokStatusCode ParseMdia(FileWrapper * fileWrapper, uint64_t length, uint64_t b
           if (!strcmp(header.name, "mdhd")) {
               result = ParseMdhd(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "hdlr")) {
-              result = ParseHdlr(fileWrapper, header.size, byteOffset);
+              result = ParseMdiaHdlr(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "elng")) {
               result = ParseElng(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "minf")) {

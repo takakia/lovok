@@ -7,7 +7,7 @@ LovokStatusCode ParseMdhd(FileWrapper * fileWrapper, uint64_t length, uint64_t b
     // todo if this is involved in an exploit
 }
 
-LovokStatusCode ParseHdlr(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
+LovokStatusCode ParseMdiaHdlr(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
     return SUCCESS;
     // todo if this is involved in an exploit
 }
@@ -36,7 +36,7 @@ LovokStatusCode ParseMinf(FileWrapper * fileWrapper, uint64_t length, uint64_t b
           } else if (!strcmp(header.name, "nmhd")) {
               result = ParseNmhd(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "dinf")) {
-              result = ParseDinf(fileWrapper, header.size, byteOffset);
+              result = ParseMinfDinf(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "stbl")) {
               result = ParseStbl(fileWrapper, header.size, byteOffset);
           }
