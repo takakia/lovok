@@ -55,6 +55,10 @@ add_library(lovok_internal
         boxes/ipro_sub_boxes.cpp
         boxes/ipro_sub_boxes.h
         boxes/sinf_sub_boxes.cpp
-        boxes/sinf_sub_boxes.h)
+        boxes/sinf_sub_boxes.h
+        boxes/fiin_sub_boxes.cpp
+        boxes/fiin_sub_boxes.h
+        boxes/paen_sub_boxes.cpp
+        boxes/paen_sub_boxes.h)
 
 target_link_libraries(lovok_internal file_io)
