@@ -51,6 +51,10 @@ add_library(lovok_internal
         boxes/traf_sub_boxes.cpp
         boxes/traf_sub_boxes.h
         boxes/meta_sub_boxes.cpp
-        boxes/meta_sub_boxes.h)
+        boxes/meta_sub_boxes.h
+        boxes/ipro_sub_boxes.cpp
+        boxes/ipro_sub_boxes.h
+        boxes/sinf_sub_boxes.cpp
+        boxes/sinf_sub_boxes.h)
 
 target_link_libraries(lovok_internal file_io)
