@@ -1,7 +1,7 @@
-#include "box.h"
-
 #ifndef LOVOK_PROGRESSIVE_DOWNLOAD_INFO_BOX_H
 #define LOVOK_PROGRESSIVE_DOWNLOAD_INFO_BOX_H
+
+#include "box.h"
 
 class ProgressiveDownloadInfoBox : public Box {
 public:

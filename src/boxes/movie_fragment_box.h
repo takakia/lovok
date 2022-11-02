@@ -1,10 +1,9 @@
-#include <utility>
-#include <vector>
-#include "box.h"
-
 #ifndef LOVOK_MOVIE_FRAGMENT_BOX_H
 #define LOVOK_MOVIE_FRAGMENT_BOX_H
 
+#include <utility>
+#include <vector>
+#include "box.h"
 
 class MovieFragmentHeaderBox : public Box {
 public:

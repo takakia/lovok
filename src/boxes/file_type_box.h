@@ -1,8 +1,8 @@
-#include "box.h"
-#include <vector>
-
 #ifndef LOVOK_FILE_TYPE_BOX_H
 #define LOVOK_FILE_TYPE_BOX_H
+
+#include "box.h"
+#include <vector>
 
 class FileTypeBox : public Box {
 public:

@@ -1,8 +1,8 @@
-#include "box.h"
-#include <vector>
-
 #ifndef LOVOK_SAMPLE_TO_CHUNK_BOX_H
 #define LOVOK_SAMPLE_TO_CHUNK_BOX_H
+
+#include "box.h"
+#include <vector>
 
 class Entry {
 public:

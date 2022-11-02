@@ -1,8 +1,8 @@
-#include "box.h"
-#include <string>
-
 #ifndef LOVOK_FULL_BOX_H
 #define LOVOK_FULL_BOX_H
+
+#include "box.h"
+#include <string>
 
 class FullBox : public Box {
 public:

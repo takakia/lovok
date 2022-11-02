@@ -1,8 +1,8 @@
-#include "box.h"
-#include "movie_header_box.h"
-
 #ifndef LOVOK_MOVIE_BOX_H
 #define LOVOK_MOVIE_BOX_H
+
+#include "box.h"
+#include "movie_header_box.h"
 
 class MoovBox : public Box {
 public:

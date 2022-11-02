@@ -8,10 +8,10 @@ class MediaDataBox: public Box
 private:
     uint8_t* data;
 public:
-    MediaDataBox(): Box("mdat") {
+    MediaDataBox(): Box((char*)"mdat") {
         data = nullptr;
     }
-    explicit MediaDataBox(uint8_t* d): Box("mdat") {
+    explicit MediaDataBox(uint8_t* d): Box((char*)"mdat") {
         data = d;//temporary not copied
     }
     

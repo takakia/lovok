@@ -1,8 +1,8 @@
-#include "box.h"
-#include "full_box.h"
-
 #ifndef LOVOK_MOVIE_HEADER_BOX_H
 #define LOVOK_MOVIE_HEADER_BOX_H
+
+#include "box.h"
+#include "full_box.h"
 
 class MovieHeaderBox : public FullBox {
 public:
