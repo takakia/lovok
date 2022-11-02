@@ -28,7 +28,7 @@ LovokStatusCode ParseNmhd(FileWrapper * fileWrapper, uint64_t length, uint64_t b
     // todo if this is involved in an exploit
 }
 
-LovokStatusCode ParseDinf(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
+LovokStatusCode ParseMinfDinf(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
     byteOffset += 8;
     length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
@@ -81,15 +81,15 @@ LovokStatusCode ParseStbl(FileWrapper * fileWrapper, uint64_t length, uint64_t b
           } else if (!strcmp(header.name, "sdtp")) {
               result = ParseSdtp(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "sbgp")) {
-              result = ParseSbgp(fileWrapper, header.size, byteOffset);
+              result = ParseStblSbgp(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "sgpd")) {
-              result = ParseSgpd(fileWrapper, header.size, byteOffset);
+              result = ParseStblSgpd(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "subs")) {
-              result = ParseSubs(fileWrapper, header.size, byteOffset);
+              result = ParseStblSubs(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "saiz")) {
-              result = ParseSaiz(fileWrapper, header.size, byteOffset);
+              result = ParseStblSaiz(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "saio")) {
-              result = ParseSaio(fileWrapper, header.size, byteOffset);
+              result = ParseStblSaio(fileWrapper, header.size, byteOffset);
           }
           return result;
       });

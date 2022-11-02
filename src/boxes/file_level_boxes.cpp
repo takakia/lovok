@@ -2,6 +2,8 @@
 #include "movie_box.h"
 #include "../lovok_handle_internal.h"
 #include "moov_sub_boxes.h"
+#include "moof_sub_boxes.h"
+#include "meta_sub_boxes.h"
 
 LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
     byteOffset += 8;
@@ -16,7 +18,7 @@ LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t by
         } else if (!strcmp(header.name, "mvhd")) {
             result = ParseMvhd(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "meta")) {
-            result = ParseMeta(fileWrapper, header.size, byteOffset);
+            result = ParseMoovMeta(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "mvex")) {
             result = ParseMvex(fileWrapper, header.size, byteOffset);
         }
@@ -26,6 +28,57 @@ LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseMoof(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
-    //todo do the real thing
+    byteOffset += 8;
+    length -= 8;
+    LovokStatusCode parseResults = ParseBoxes(fileWrapper,
+                                              length,
+                                              byteOffset,
+                                              [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
+          LovokStatusCode result = SUCCESS;
+          if (!strcmp(header.name, "mfhd")) {
+              result = ParseMfhd(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "meta")) {
+              result = ParseMoofMeta(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "traf")) {
+              result = ParseTraf(fileWrapper, header.size, byteOffset);
+          }
+          return result;
+      });
+    return parseResults;
+}
+
+LovokStatusCode ParseMeta(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+    byteOffset += 8;
+    length -= 8;
+    LovokStatusCode parseResults = ParseBoxes(fileWrapper,
+                                              length,
+                                              byteOffset,
+                                              [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
+          LovokStatusCode result = SUCCESS;
+          if (!strcmp(header.name, "hdlr")) {
+              result = ParseHdlr(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "dinf")) {
+              result = ParseDinf(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "iloc")) {
+              result = ParseIloc(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "ipro")) {
+              result = ParseIpro(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "iinf")) {
+              result = ParseIinf(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "xml")) {
+              result = ParseXml(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "bxml")) {
+              result = ParseBxml(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "pitm")) {
+              result = ParsePitm(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "fiin")) {
+              result = ParseFiin(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "idat")) {
+              result = ParseIdat(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "iref")) {
+              result = ParseIref(fileWrapper, header.size, byteOffset);
+          }
+          return result;
+      });
+    return parseResults;
 }

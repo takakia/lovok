@@ -71,27 +71,27 @@ LovokStatusCode ParseSdtp(FileWrapper * fileWrapper, uint64_t length, uint64_t b
     // todo if this is involved in an exploit
 }
 
-LovokStatusCode ParseSbgp(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
+LovokStatusCode ParseStblSbgp(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
     return SUCCESS;
     // todo if this is involved in an exploit
 }
 
-LovokStatusCode ParseSgpd(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
+LovokStatusCode ParseStblSgpd(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
     return SUCCESS;
     // todo if this is involved in an exploit
 }
 
-LovokStatusCode ParseSubs(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
+LovokStatusCode ParseStblSubs(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
     return SUCCESS;
     // todo if this is involved in an exploit
 }
 
-LovokStatusCode ParseSaiz(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
+LovokStatusCode ParseStblSaiz(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
     return SUCCESS;
     // todo if this is involved in an exploit
 }
 
-LovokStatusCode ParseSaio(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
+LovokStatusCode ParseStblSaio(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
     return SUCCESS;
     // todo if this is involved in an exploit
 }

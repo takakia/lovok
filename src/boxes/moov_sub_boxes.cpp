@@ -20,7 +20,7 @@ LovokStatusCode ParseTrak(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "edts")) {
               result = ParseEdts(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "meta")) {
-              result = ParseMeta(fileWrapper, header.size, byteOffset);
+              result = ParseTrakMeta(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "mdia")) {
               result = ParseMdia(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "udta")) {
@@ -36,7 +36,7 @@ LovokStatusCode ParseMvhd(FileWrapper *fileWrapper, uint64_t length, uint64_t by
     //todo if this is involved in an exploit
 }
 
-LovokStatusCode ParseMeta(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+LovokStatusCode ParseMoovMeta(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
     return SUCCESS;
     //todo if this is involved in an exploit
 }
