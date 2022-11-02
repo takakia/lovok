@@ -1,18 +1,17 @@
-#include "box.h"
-#include <string>
-
 #ifndef LOVOK_FULL_BOX_H
 #define LOVOK_FULL_BOX_H
+
+#include "box.h"
+#include <string>
 
 class FullBox : public Box {
 public:
     uint8_t version;
     unsigned int flags : 24;
 
-    FullBox(int s, char n[4], uint8_t v, unsigned int f) {
-        size = s;
-        strncpy(name, n, 4);
-        version = v;
+    FullBox(int s, char n[BOX_NAME_BUFFER_LEN], uint8_t v, unsigned int f)
+        : Box(n, s), version(v) 
+    {
         flags = std::move(f);
     }
 };
