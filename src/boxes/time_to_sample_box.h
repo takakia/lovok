@@ -7,9 +7,7 @@ class TimeToSampleBox : public FullBox {
 private:
     uint32_t entry_count;
 public:
-    TimeToSampleBox(int s, char n[4], const uint32_t ec) : FullBox(s, n, 0, 0) {
-        entry_count = ec;
-    }
+    TimeToSampleBox(int s, char n[BOX_NAME_BUFFER_LEN], const uint32_t ec) : FullBox(s, n, 0, 0), entry_count(ec) {}
     
     virtual ~TimeToSampleBox() {}
 };
