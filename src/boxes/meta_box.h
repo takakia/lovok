@@ -1,9 +1,9 @@
+#ifndef LOVOK_META_BOX_H
+#define LOVOK_META_BOX_H
+
 #include "box.h"
 #include <utility>
 #include <vector>
-
-#ifndef LOVOK_META_BOX_H
-#define LOVOK_META_BOX_H
 
 class HandlerBox : public Box {
     uint32_t handler_type;

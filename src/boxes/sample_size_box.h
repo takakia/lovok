@@ -1,7 +1,7 @@
-#include "box.h"
-
 #ifndef LOVOK_SAMPLE_SIZE_BOX_H
 #define LOVOK_SAMPLE_SIZE_BOX_H
+
+#include "box.h"
 
 class SampleSizeBox : public Box {
     // Specifies default sample size
