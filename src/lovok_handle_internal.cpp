@@ -96,6 +96,10 @@ LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
             result = ParseMoof(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "meta")) {
             result = ParseMeta(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "mfra")) {
+            result = ParseMfra(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "skip")) {
+            result = ParseSkip(fileWrapper, header.size, byteOffset);
         }
         return result;
     });
