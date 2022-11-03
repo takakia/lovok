@@ -4,6 +4,7 @@
 #include "moov_sub_boxes.h"
 #include "moof_sub_boxes.h"
 #include "meta_sub_boxes.h"
+#include "mfra_sub_boxes.h"
 
 LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
     byteOffset += 8;
@@ -77,6 +78,24 @@ LovokStatusCode ParseMeta(FileWrapper *fileWrapper, uint64_t length, uint64_t by
               result = ParseIdat(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "iref")) {
               result = ParseIref(fileWrapper, header.size, byteOffset);
+          }
+          return result;
+      });
+    return parseResults;
+}
+
+LovokStatusCode ParseMfra(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+    byteOffset += 8;
+    length -= 8;
+    LovokStatusCode parseResults = ParseBoxes(fileWrapper,
+                                              length,
+                                              byteOffset,
+                                              [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
+          LovokStatusCode result = SUCCESS;
+          if (!strcmp(header.name, "tfra")) {
+              result = ParseTfra(fileWrapper, header.size, byteOffset);
+          } else if (!strcmp(header.name, "mfro")) {
+              result = ParseMfro(fileWrapper, header.size, byteOffset);
           }
           return result;
       });

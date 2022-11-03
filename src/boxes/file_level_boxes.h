@@ -13,4 +13,6 @@ LovokStatusCode ParseMoof(FileWrapper *, uint64_t, uint64_t);
 
 LovokStatusCode ParseMeta(FileWrapper *, uint64_t, uint64_t);
 
+LovokStatusCode ParseMfra(FileWrapper *, uint64_t, uint64_t);
+
 #endif //LOVOK_FILE_LEVEL_BOXES_H
