@@ -67,6 +67,10 @@ add_library(lovok_internal
         boxes/skipudta_sub_boxes.cpp
         boxes/skipudta_sub_boxes.h
         boxes/strk_sub_boxes.cpp
-        boxes/strk_sub_boxes.h)
+        boxes/strk_sub_boxes.h
+        boxes/meco_sub_boxes.cpp
+        boxes/meco_sub_boxes.h
+        boxes/mere_sub_boxes.cpp
+        boxes/mere_sub_boxes.h)
 
 target_link_libraries(lovok_internal file_io)

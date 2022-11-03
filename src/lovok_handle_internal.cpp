@@ -100,6 +100,8 @@ LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
             result = ParseMfra(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "skip")) {
             result = ParseSkip(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "meco")) {
+            result = ParseMeco(fileWrapper, header.size, byteOffset);
         }
         return result;
     });
