@@ -1,3 +1,5 @@
+#include "../libs/io/file_io.h"
+
 #ifndef LOVOK_LOVOK_H
 #define LOVOK_LOVOK_H
 
@@ -14,6 +16,8 @@ enum LovokStatusCode {
 typedef struct LovokHandleInternal *LOVOK_HANDLE;
 
 LOVOK_HANDLE Lovok_create(const char *name);
+
+LOVOK_HANDLE Lovok_create_by_handle(FileWrapper *);
 
 LovokStatusCode valid_mp4(LOVOK_HANDLE);
 
