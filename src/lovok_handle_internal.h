@@ -7,7 +7,7 @@
 #define LOVOK_LOVOK_HANDLE_INTERNAL_H
 
 typedef struct LovokHandleInternal {
-    const char * name;
+    FileWrapper *wrapper;
 } *LOVOK_HANDLE_INTERNAL;
 
 LovokStatusCode ParseBoxes(FileWrapper *, uint64_t, uint64_t, const std::function<LovokStatusCode(const Box &, uint64_t)> &);

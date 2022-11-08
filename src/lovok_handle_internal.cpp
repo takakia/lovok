@@ -80,7 +80,7 @@ LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t b
 }
 
 LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
-    FileWrapper *fileWrapper = FileWrapper_Open(handle->name);
+    FileWrapper *fileWrapper = handle->wrapper;
     if (!fileWrapper) {
         return PARSE_ERROR;
     }
@@ -99,6 +99,5 @@ LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
         }
         return result;
     });
-    FileWrapper_Close(fileWrapper);
     return parseResults;
 }
