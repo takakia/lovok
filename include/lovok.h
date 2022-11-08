@@ -11,6 +11,7 @@ enum LovokStatusCode {
     SUCCESS = 0,
     PARSE_ERROR = 1,
     INVALID_FILE = 2,
+    UNKNOWN_BOX,
 };
 
 typedef struct LovokHandleInternal *LOVOK_HANDLE;
