@@ -53,6 +53,7 @@ LovokStatusCode ParseHeader(FileWrapper *fileWrapper, Box *header) {
 }
 
 LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset, const std::function<LovokStatusCode(const Box &, uint64_t)> &f) {
+    if (length < 0) { return PARSE_ERROR; }
     while (length > 0) {
         Box header = Box();
         LovokStatusCode parsedHeader = ParseHeader(fileWrapper, &header);
