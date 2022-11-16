@@ -24,7 +24,7 @@ LovokStatusCode ParseTrak(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "mdia")) {
               result = ParseMdia(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "udta")) {
-              result = ParseUdta(fileWrapper, header.size, byteOffset);
+              result = ParseTrakUdta(fileWrapper, header.size, byteOffset);
           }
           return result;
       });

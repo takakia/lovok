@@ -19,6 +19,6 @@ LovokStatusCode ParseTrakMeta(FileWrapper *, uint64_t, uint64_t); // Redeclare h
 
 LovokStatusCode ParseMdia(FileWrapper *, uint64_t, uint64_t);
 
-LovokStatusCode ParseUdta(FileWrapper *, uint64_t, uint64_t);
+LovokStatusCode ParseTrakUdta(FileWrapper *, uint64_t, uint64_t);
 
 #endif //LOVOK_TRAK_SUB_BOXES_H

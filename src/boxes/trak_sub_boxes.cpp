@@ -61,7 +61,7 @@ LovokStatusCode ParseMdia(FileWrapper * fileWrapper, uint64_t length, uint64_t b
     return parseResults;
 }
 
-LovokStatusCode ParseUdta(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
+LovokStatusCode ParseTrakUdta(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
     return SUCCESS;
     // todo if this is involved in an exploit
 }

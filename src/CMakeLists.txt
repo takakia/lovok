@@ -59,6 +59,18 @@ add_library(lovok_internal
         boxes/fiin_sub_boxes.cpp
         boxes/fiin_sub_boxes.h
         boxes/paen_sub_boxes.cpp
-        boxes/paen_sub_boxes.h)
+        boxes/paen_sub_boxes.h
+        boxes/mfra_sub_boxes.cpp
+        boxes/mfra_sub_boxes.h
+        boxes/skip_sub_boxes.cpp
+        boxes/skip_sub_boxes.h
+        boxes/skipudta_sub_boxes.cpp
+        boxes/skipudta_sub_boxes.h
+        boxes/strk_sub_boxes.cpp
+        boxes/strk_sub_boxes.h
+        boxes/meco_sub_boxes.cpp
+        boxes/meco_sub_boxes.h
+        boxes/mere_sub_boxes.cpp
+        boxes/mere_sub_boxes.h)
 
 target_link_libraries(lovok_internal file_io)
