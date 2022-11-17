@@ -64,7 +64,9 @@ static int fopen_seek(void *contextp, uint64_t pos) {
 
 static void fopen_close(void *contextp) {
     struct FileWrapper_StdIO *context = (struct FileWrapper_StdIO*) contextp;
-    fclose(context->f);
+    if (context->f) {
+      fclose(context->f);
+    }
     free(context);
 }
 
