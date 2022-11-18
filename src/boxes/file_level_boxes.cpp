@@ -135,3 +135,43 @@ LovokStatusCode ParseMeco(FileWrapper *fileWrapper, uint64_t length, uint64_t by
       });
     return parseResults;
 }
+
+LovokStatusCode ParseFtyp(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+    return SUCCESS;
+    // todo if this is involved in an exploit
+}
+
+LovokStatusCode ParsePdin(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+    return SUCCESS;
+    // todo if this is involved in an exploit
+}
+
+LovokStatusCode ParseMdat(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+    return SUCCESS;
+    // todo if this is involved in an exploit
+}
+
+LovokStatusCode ParseFree(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+    return SUCCESS;
+    // todo if this is involved in an exploit
+}
+
+LovokStatusCode ParseStyp(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+    return SUCCESS;
+    // todo if this is involved in an exploit
+}
+
+LovokStatusCode ParseSidx(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+    return SUCCESS;
+    // todo if this is involved in an exploit
+}
+
+LovokStatusCode ParseSsix(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+    return SUCCESS;
+    // todo if this is involved in an exploit
+}
+
+LovokStatusCode ParsePrft(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+    return SUCCESS;
+    // todo if this is involved in an exploit
+}
