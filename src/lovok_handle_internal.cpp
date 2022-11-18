@@ -103,6 +103,22 @@ LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
             result = ParseSkip(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "meco")) {
             result = ParseMeco(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "ftyp")) {
+            result = ParseFtyp(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "pdin")) {
+            result = ParsePdin(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "mdat")) {
+            result = ParseMdat(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "free")) {
+            result = ParseFree(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "styp")) {
+            result = ParseStyp(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "sidx")) {
+            result = ParseSidx(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "ssix")) {
+            result = ParseSsix(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "prft")) {
+            result = ParsePrft(fileWrapper, header.size, byteOffset);
         }
         return result;
     });
