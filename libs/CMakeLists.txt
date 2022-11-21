@@ -1,6 +1,6 @@
 project(file_io LANGUAGES C)
 
-add_library(file_io "")
+add_library(file_io "" exploit_generator/make_exploit.h exploit_generator/make_exploit.cpp)
 
 target_sources(file_io
         PRIVATE

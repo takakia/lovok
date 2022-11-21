@@ -10,3 +10,4 @@ compile_commands.json
 tags
 *.vim
 *.swp
+tests/test_data/*
