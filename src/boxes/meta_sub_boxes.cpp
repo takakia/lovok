@@ -5,7 +5,7 @@
 #include "fiin_sub_boxes.h"
 
 LovokStatusCode ParseHdlr(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }
 
@@ -16,7 +16,7 @@ LovokStatusCode ParseDinf(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "dref")) {
               result = ParseDref(fileWrapper, header.size, byteOffset);
           }
@@ -26,7 +26,7 @@ LovokStatusCode ParseDinf(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseIloc(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }
 
@@ -37,7 +37,7 @@ LovokStatusCode ParseIpro(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "sinf")) {
               result = ParseSinf(fileWrapper, header.size, byteOffset);
           }
@@ -47,22 +47,22 @@ LovokStatusCode ParseIpro(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseIinf(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseXml(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseBxml(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }
 
 LovokStatusCode ParsePitm(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }
 
@@ -73,7 +73,7 @@ LovokStatusCode ParseFiin(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "paen")) {
               result = ParsePaen(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "segr")) {
@@ -87,11 +87,11 @@ LovokStatusCode ParseFiin(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseIdat(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseIref(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }

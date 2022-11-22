@@ -15,7 +15,7 @@ LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                length,
                byteOffset,
                [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-        LovokStatusCode result = SUCCESS;
+        LovokStatusCode result = UNKNOWN_BOX;
         if (!strcmp(header.name, "trak")) {
             result = ParseTrak(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "mvhd")) {
@@ -37,7 +37,7 @@ LovokStatusCode ParseMoof(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "mfhd")) {
               result = ParseMfhd(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "meta")) {
@@ -57,7 +57,7 @@ LovokStatusCode ParseMeta(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "hdlr")) {
               result = ParseHdlr(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "dinf")) {
@@ -93,7 +93,7 @@ LovokStatusCode ParseMfra(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "tfra")) {
               result = ParseTfra(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "mfro")) {
@@ -111,7 +111,7 @@ LovokStatusCode ParseSkip(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "udta")) {
               result = ParseSkipUdta(fileWrapper, header.size, byteOffset);
           }
@@ -127,7 +127,7 @@ LovokStatusCode ParseMeco(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "mere")) {
               result = ParseMere(fileWrapper, header.size, byteOffset);
           }
@@ -137,41 +137,41 @@ LovokStatusCode ParseMeco(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseFtyp(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParsePdin(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseMdat(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseFree(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseStyp(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseSidx(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseSsix(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParsePrft(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }

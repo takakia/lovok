@@ -8,8 +8,8 @@ extern "C" {
 #endif
 
 enum LovokStatusCode {
-    SUCCESS = 0,
-    PARSE_ERROR = 1,
+    PARSE_ERROR = 0,
+    VALID_FILE = 1,
     INVALID_FILE = 2,
     UNKNOWN_BOX = 3,
 };

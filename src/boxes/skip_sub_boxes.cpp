@@ -8,7 +8,7 @@ LovokStatusCode ParseSkipUdta(FileWrapper *fileWrapper, uint64_t length, uint64_
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "cprt")) {
               result = ParseCprt(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "tsel")) {

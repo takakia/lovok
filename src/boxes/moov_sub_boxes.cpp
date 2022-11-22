@@ -10,7 +10,7 @@ LovokStatusCode ParseTrak(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "tkhd")) {
               result = ParseTkhd(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "tref")) {
@@ -32,12 +32,12 @@ LovokStatusCode ParseTrak(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseMvhd(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseMoovMeta(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }
 
@@ -48,7 +48,7 @@ LovokStatusCode ParseMvex(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "mehd")) {
               result = ParseMehd(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "trex")) {

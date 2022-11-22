@@ -3,12 +3,12 @@
 #include "strk_sub_boxes.h"
 
 LovokStatusCode ParseCprt(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo: Handling exploit for box if one is known
 }
 
 LovokStatusCode ParseTsel(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo: Handling exploit for box if one is known
 }
 
@@ -19,7 +19,7 @@ LovokStatusCode ParseStrk(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "stri")) {
               result = ParseStri(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "strd")) {

@@ -9,7 +9,7 @@ LovokStatusCode ParseMere(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "meta")) {
               result = ParseMereMeta(fileWrapper, header.size, byteOffset);
           }

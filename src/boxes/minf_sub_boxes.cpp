@@ -4,27 +4,27 @@
 #include "stbl_sub_boxes.h"
 
 LovokStatusCode ParseVmhd(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseSmhd(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseHmhd(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseSthd(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseNmhd(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
@@ -35,7 +35,7 @@ LovokStatusCode ParseMinfDinf(FileWrapper * fileWrapper, uint64_t length, uint64
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "dref")) {
               result = ParseDref(fileWrapper, header.size, byteOffset);
           }
@@ -51,7 +51,7 @@ LovokStatusCode ParseStbl(FileWrapper * fileWrapper, uint64_t length, uint64_t b
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "stsd")) {
               result = ParseStsd(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "stts")) {

@@ -49,7 +49,7 @@ LovokStatusCode ParseHeader(FileWrapper *fileWrapper, Box *header) {
     } else {
         header->size = boxSize;
     }
-    return SUCCESS;
+    return VALID_FILE;
 }
 
 LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset, const std::function<LovokStatusCode(const Box &, uint64_t)> &f) {
@@ -57,14 +57,14 @@ LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t b
     while (length > 0) {
         Box header = Box();
         LovokStatusCode parsedHeader = ParseHeader(fileWrapper, &header);
-        if (parsedHeader != SUCCESS) {
+        if (parsedHeader != VALID_FILE) {
             FileWrapper_Close(fileWrapper);
             return PARSE_ERROR;
         }
 
         // Parse Boxes within this box with function f
         LovokStatusCode boxResult = f(header, byteOffset);
-        if (boxResult != SUCCESS) {
+        if (boxResult != VALID_FILE) {
             FileWrapper_Close(fileWrapper);
             return boxResult;
         }
@@ -77,7 +77,7 @@ LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t b
         byteOffset += header.size;
         length -= header.size;
     }
-    return SUCCESS;
+    return VALID_FILE;
 }
 
 LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
@@ -90,7 +90,7 @@ LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
     LovokStatusCode parseResults = ParseBoxes(fileWrapper, length, byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
         // TODO add logic for Moov and other top level boxes
-        LovokStatusCode result = SUCCESS;
+        LovokStatusCode result = UNKNOWN_BOX;
         if (!strcmp(header.name, "moov")) {
             result = ParseMoov(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "moof")) {

@@ -3,12 +3,12 @@
 #include "traf_sub_boxes.h"
 
 LovokStatusCode ParseMfhd(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseMoofMeta(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     //todo if this is involved in an exploit
 }
 
@@ -19,7 +19,7 @@ LovokStatusCode ParseTraf(FileWrapper *fileWrapper, uint64_t length, uint64_t by
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "tfhd")) {
               result = ParseTfhd(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "trun")) {

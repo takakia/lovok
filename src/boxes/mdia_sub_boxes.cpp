@@ -3,17 +3,17 @@
 #include "minf_sub_boxes.h"
 
 LovokStatusCode ParseMdhd(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseMdiaHdlr(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
 LovokStatusCode ParseElng(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
-    return SUCCESS;
+    return VALID_FILE;
     // todo if this is involved in an exploit
 }
 
@@ -24,7 +24,7 @@ LovokStatusCode ParseMinf(FileWrapper * fileWrapper, uint64_t length, uint64_t b
                                               length,
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
-          LovokStatusCode result = SUCCESS;
+          LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "vmhd")) {
               result = ParseVmhd(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "smhd")) {
