@@ -53,6 +53,22 @@ LovokStatusCode ParseHeader(FileWrapper *fileWrapper, Box *header) {
     return VALID_FILE;
 }
 
+bool AdditionOverflow(uint64_t a, uint64_t b, uint64_t *result) {
+    *result = a + b;
+    if (*result < a || *result < b) {
+        return true;
+    }
+    return false;
+}
+
+bool AdditionUnderflow(uint64_t a, uint64_t b, uint64_t *result) {
+    *result = a - b;
+    if ((*result > a) || (*result > b && a < b)) {
+        return true;
+    }
+    return false;
+}
+
 LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset, const std::function<LovokStatusCode(const Box &, uint64_t)> &f) {
     if (length < 0) { return PARSE_ERROR; }
     while (length > 0) {
@@ -72,8 +88,12 @@ LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t b
         if (err != 0) {
             return PARSE_ERROR;
         }
-        byteOffset += header.size;
-        length -= header.size;
+        if (AdditionOverflow(byteOffset, header.size, &byteOffset)) {
+            return INVALID_FILE;
+        }
+        if (AdditionUnderflow(length, header.size, &length)) {
+            return INVALID_FILE;
+        }
     }
     return VALID_FILE;
 }
