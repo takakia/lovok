@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../lovok_handle_internal.h"
 #include "skip_sub_boxes.h"
 #include "strk_sub_boxes.h"
@@ -24,6 +25,9 @@ LovokStatusCode ParseStrk(FileWrapper *fileWrapper, uint64_t length, uint64_t by
               result = ParseStri(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "strd")) {
               result = ParseStrd(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseStrk: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });

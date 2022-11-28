@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../lovok_handle_internal.h"
 #include "meco_sub_boxes.h"
 #include "mere_sub_boxes.h"
@@ -12,6 +13,9 @@ LovokStatusCode ParseMere(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "meta")) {
               result = ParseMereMeta(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseMere: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });

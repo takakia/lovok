@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../lovok_handle_internal.h"
 #include "ipro_sub_boxes.h"
 #include "sinf_sub_boxes.h"
@@ -16,6 +17,9 @@ LovokStatusCode ParseSinf(FileWrapper *fileWrapper, uint64_t length, uint64_t by
               result = ParseSchm(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "schi")) {
               result = ParseSchi(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseSing: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });

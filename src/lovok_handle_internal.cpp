@@ -1,5 +1,6 @@
 #include <functional>
 #include <cstring>
+#include <iostream>
 #include "lovok_handle_internal.h"
 #include "io/file_io.h"
 #include "boxes/box.h"
@@ -58,20 +59,17 @@ LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t b
         Box header = Box();
         LovokStatusCode parsedHeader = ParseHeader(fileWrapper, &header);
         if (parsedHeader != VALID_FILE) {
-            FileWrapper_Close(fileWrapper);
             return PARSE_ERROR;
         }
 
         // Parse Boxes within this box with function f
         LovokStatusCode boxResult = f(header, byteOffset);
         if (boxResult != VALID_FILE) {
-            FileWrapper_Close(fileWrapper);
             return boxResult;
         }
         // seek to next box
         int err = FileWrapper_Seek(fileWrapper, byteOffset + header.size);
         if (err != 0) {
-            FileWrapper_Close(fileWrapper);
             return PARSE_ERROR;
         }
         byteOffset += header.size;
@@ -119,6 +117,9 @@ LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
             result = ParseSsix(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "prft")) {
             result = ParsePrft(fileWrapper, header.size, byteOffset);
+        } else {
+            std::cout << "Unknown box name in ParseMp4: ";
+            std::cout << header.name << std::endl;
         }
         return result;
     });

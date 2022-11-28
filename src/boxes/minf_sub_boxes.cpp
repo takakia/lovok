@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../lovok_handle_internal.h"
 #include "minf_sub_boxes.h"
 #include "dinf_sub_boxes.h"
@@ -38,6 +39,9 @@ LovokStatusCode ParseMinfDinf(FileWrapper * fileWrapper, uint64_t length, uint64
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "dref")) {
               result = ParseDref(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseMinfDinf: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });
@@ -90,6 +94,9 @@ LovokStatusCode ParseStbl(FileWrapper * fileWrapper, uint64_t length, uint64_t b
               result = ParseStblSaiz(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "saio")) {
               result = ParseStblSaio(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseStbl: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../lovok_handle_internal.h"
 #include "moov_sub_boxes.h"
 #include "trak_sub_boxes.h"
@@ -25,6 +26,9 @@ LovokStatusCode ParseTrak(FileWrapper *fileWrapper, uint64_t length, uint64_t by
               result = ParseMdia(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "udta")) {
               result = ParseTrakUdta(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseTrak: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });
@@ -55,8 +59,16 @@ LovokStatusCode ParseMvex(FileWrapper *fileWrapper, uint64_t length, uint64_t by
               result = ParseTrex(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "leva")) {
               result = ParseLeva(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseMvex: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });
     return parseResults;
+}
+
+LovokStatusCode ParseMoovUdta(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
+    return VALID_FILE;
+    //todo if this is involved in an exploit
 }

@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../lovok_handle_internal.h"
 #include "moof_sub_boxes.h"
 #include "traf_sub_boxes.h"
@@ -38,6 +39,9 @@ LovokStatusCode ParseTraf(FileWrapper *fileWrapper, uint64_t length, uint64_t by
               result = ParseTfdt(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "meta")) {
               result = ParseTrafMeta(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseTraf: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });

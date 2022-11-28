@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../lovok_handle_internal.h"
 #include "trak_sub_boxes.h"
 #include "edts_sub_boxes.h"
@@ -26,8 +27,11 @@ LovokStatusCode ParseEdts(FileWrapper * fileWrapper, uint64_t length, uint64_t b
                                               byteOffset,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
           LovokStatusCode result = UNKNOWN_BOX;
-          if (!strcmp(header.name, "edts")) {
-              result = ParseEdts(fileWrapper, header.size, byteOffset);
+          if (!strcmp(header.name, "elst")) {
+              result = ParseElst(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseEdts: ";
+              std::cout << header.name << std::endl;
           }
           return result;
         });
@@ -55,6 +59,9 @@ LovokStatusCode ParseMdia(FileWrapper * fileWrapper, uint64_t length, uint64_t b
               result = ParseElng(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "minf")) {
               result = ParseMinf(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseMdia: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });

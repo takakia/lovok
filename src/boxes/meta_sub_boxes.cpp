@@ -1,3 +1,4 @@
+#include <iostream>
 #include "../lovok_handle_internal.h"
 #include "meta_sub_boxes.h"
 #include "dinf_sub_boxes.h"
@@ -19,6 +20,9 @@ LovokStatusCode ParseDinf(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "dref")) {
               result = ParseDref(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseDinf: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });
@@ -40,6 +44,9 @@ LovokStatusCode ParseIpro(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "sinf")) {
               result = ParseSinf(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseIpro: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });
@@ -80,6 +87,9 @@ LovokStatusCode ParseFiin(FileWrapper *fileWrapper, uint64_t length, uint64_t by
               result = ParseSegr(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "gitn")) {
               result = ParseGitn(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseFiin: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });

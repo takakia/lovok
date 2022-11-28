@@ -1,3 +1,4 @@
+#include <iostream>
 #include "file_level_boxes.h"
 #include "movie_box.h"
 #include "../lovok_handle_internal.h"
@@ -24,6 +25,11 @@ LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t by
             result = ParseMoovMeta(fileWrapper, header.size, byteOffset);
         } else if (!strcmp(header.name, "mvex")) {
             result = ParseMvex(fileWrapper, header.size, byteOffset);
+        } else if (!strcmp(header.name, "udta")) {
+            result = ParseMoovUdta(fileWrapper, header.size, byteOffset);
+        } else {
+            std::cout << "Unknown box name in ParseMoov: ";
+            std::cout << header.name << std::endl;
         }
         return result;
     });
@@ -44,6 +50,9 @@ LovokStatusCode ParseMoof(FileWrapper *fileWrapper, uint64_t length, uint64_t by
               result = ParseMoofMeta(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "traf")) {
               result = ParseTraf(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseMoof: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });
@@ -80,6 +89,9 @@ LovokStatusCode ParseMeta(FileWrapper *fileWrapper, uint64_t length, uint64_t by
               result = ParseIdat(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "iref")) {
               result = ParseIref(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseMeta File level: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });
@@ -98,6 +110,9 @@ LovokStatusCode ParseMfra(FileWrapper *fileWrapper, uint64_t length, uint64_t by
               result = ParseTfra(fileWrapper, header.size, byteOffset);
           } else if (!strcmp(header.name, "mfro")) {
               result = ParseMfro(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseMfra: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });
@@ -114,6 +129,9 @@ LovokStatusCode ParseSkip(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "udta")) {
               result = ParseSkipUdta(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseSkip: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });
@@ -130,6 +148,9 @@ LovokStatusCode ParseMeco(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "mere")) {
               result = ParseMere(fileWrapper, header.size, byteOffset);
+          } else {
+              std::cout << "Unknown box name in ParseMeco: ";
+              std::cout << header.name << std::endl;
           }
           return result;
       });
