@@ -40,7 +40,7 @@ LovokStatusCode ParseTraf(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "meta")) {
               result = ParseTrafMeta(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Encountered unknown box while parsing 'traf' box: ";
+              std::cout << "Encountered unknown box while parsing traf box: ";
               std::cout << header.name << std::endl;
           }
           return result;

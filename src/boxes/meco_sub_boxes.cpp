@@ -14,7 +14,7 @@ LovokStatusCode ParseMere(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           if (!strcmp(header.name, "meta")) {
               result = ParseMereMeta(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Encountered unknown box while parsing 'mere' box: ";
+              std::cout << "Encountered unknown box while parsing mere box: ";
               std::cout << header.name << std::endl;
           }
           return result;

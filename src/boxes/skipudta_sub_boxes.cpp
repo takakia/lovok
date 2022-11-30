@@ -26,7 +26,7 @@ LovokStatusCode ParseStrk(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "strd")) {
               result = ParseStrd(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Encountered unknown box while parsing 'strk' box: ";
+              std::cout << "Encountered unknown box while parsing strk box: ";
               std::cout << header.name << std::endl;
           }
           return result;
