@@ -27,7 +27,7 @@ LovokStatusCode ParseTrak(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "udta")) {
               result = ParseTrakUdta(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseTrak: ";
+              std::cout << "Encountered unknown box while parsing 'trak' box: ";
               std::cout << header.name << std::endl;
           }
           return result;
@@ -60,7 +60,7 @@ LovokStatusCode ParseMvex(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "leva")) {
               result = ParseLeva(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseMvex: ";
+              std::cout << "Encountered unknown box while parsing 'mvex' box: ";
               std::cout << header.name << std::endl;
           }
           return result;

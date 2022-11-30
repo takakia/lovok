@@ -118,7 +118,7 @@ LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
         } else if (!strcmp(header.name, "prft")) {
             result = ParsePrft(fileWrapper, header.size, byteOffset);
         } else {
-            std::cout << "Unknown box name in ParseMp4: ";
+            std::cout << "Encountered unknown box while parsing mp4 top level boxes: ";
             std::cout << header.name << std::endl;
         }
         return result;

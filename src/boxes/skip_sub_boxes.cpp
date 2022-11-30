@@ -17,7 +17,7 @@ LovokStatusCode ParseSkipUdta(FileWrapper *fileWrapper, uint64_t length, uint64_
           } else if (!strcmp(header.name, "strk")) {
               result = ParseStrk(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseSkipUdta: ";
+              std::cout << "Encountered unknown box while parsing 'udta' box: ";
               std::cout << header.name << std::endl;
           }
           return result;

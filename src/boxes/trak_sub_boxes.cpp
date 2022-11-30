@@ -30,7 +30,7 @@ LovokStatusCode ParseEdts(FileWrapper * fileWrapper, uint64_t length, uint64_t b
           if (!strcmp(header.name, "elst")) {
               result = ParseElst(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseEdts: ";
+              std::cout << "Encountered unknown box while parsing 'edts' box: ";
               std::cout << header.name << std::endl;
           }
           return result;
@@ -60,7 +60,7 @@ LovokStatusCode ParseMdia(FileWrapper * fileWrapper, uint64_t length, uint64_t b
           } else if (!strcmp(header.name, "minf")) {
               result = ParseMinf(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseMdia: ";
+              std::cout << "Encountered unknown box while parsing 'mdia' box: ";
               std::cout << header.name << std::endl;
           }
           return result;

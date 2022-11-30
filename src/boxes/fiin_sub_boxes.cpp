@@ -18,7 +18,7 @@ LovokStatusCode ParsePaen(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "fecr")) {
               result = ParseFecr(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParsePaen: ";
+              std::cout << "Encountered unknown box while parsing 'paen' box: ";
               std::cout << header.name << std::endl;
           }
           return result;

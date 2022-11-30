@@ -18,7 +18,7 @@ LovokStatusCode ParseSinf(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "schi")) {
               result = ParseSchi(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseSing: ";
+              std::cout << "Encountered unknown box while parsing 'sinf' box: ";
               std::cout << header.name << std::endl;
           }
           return result;

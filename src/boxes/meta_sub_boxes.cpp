@@ -21,7 +21,7 @@ LovokStatusCode ParseDinf(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           if (!strcmp(header.name, "dref")) {
               result = ParseDref(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseDinf: ";
+              std::cout << "Encountered unknown box while parsing 'dinf' box: ";
               std::cout << header.name << std::endl;
           }
           return result;
@@ -45,7 +45,7 @@ LovokStatusCode ParseIpro(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           if (!strcmp(header.name, "sinf")) {
               result = ParseSinf(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseIpro: ";
+              std::cout << "Encountered unknown box while parsing 'iloc' box: ";
               std::cout << header.name << std::endl;
           }
           return result;
@@ -88,7 +88,7 @@ LovokStatusCode ParseFiin(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "gitn")) {
               result = ParseGitn(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseFiin: ";
+              std::cout << "Encountered unknown box while parsing 'fiin' box: ";
               std::cout << header.name << std::endl;
           }
           return result;

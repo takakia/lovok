@@ -40,7 +40,7 @@ LovokStatusCode ParseMinfDinf(FileWrapper * fileWrapper, uint64_t length, uint64
           if (!strcmp(header.name, "dref")) {
               result = ParseDref(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseMinfDinf: ";
+              std::cout << "Encountered unknown box while parsing 'dinf' box: ";
               std::cout << header.name << std::endl;
           }
           return result;
@@ -95,7 +95,7 @@ LovokStatusCode ParseStbl(FileWrapper * fileWrapper, uint64_t length, uint64_t b
           } else if (!strcmp(header.name, "saio")) {
               result = ParseStblSaio(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseStbl: ";
+              std::cout << "Encountered unknown box while parsing 'stbl' box: ";
               std::cout << header.name << std::endl;
           }
           return result;

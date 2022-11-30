@@ -28,7 +28,7 @@ LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t by
         } else if (!strcmp(header.name, "udta")) {
             result = ParseMoovUdta(fileWrapper, header.size, byteOffset);
         } else {
-            std::cout << "Unknown box name in ParseMoov: ";
+            std::cout << "Encountered unknown box while parsing 'moov' box: ";
             std::cout << header.name << std::endl;
         }
         return result;
@@ -51,7 +51,7 @@ LovokStatusCode ParseMoof(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "traf")) {
               result = ParseTraf(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseMoof: ";
+              std::cout << "Encountered unknown box while parsing 'moof' box: ";
               std::cout << header.name << std::endl;
           }
           return result;
@@ -90,7 +90,7 @@ LovokStatusCode ParseMeta(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "iref")) {
               result = ParseIref(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseMeta File level: ";
+              std::cout << "Encountered unknown box while parsing 'meta' box: ";
               std::cout << header.name << std::endl;
           }
           return result;
@@ -111,7 +111,7 @@ LovokStatusCode ParseMfra(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           } else if (!strcmp(header.name, "mfro")) {
               result = ParseMfro(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseMfra: ";
+              std::cout << "Encountered unknown box while parsing 'mfra' box: ";
               std::cout << header.name << std::endl;
           }
           return result;
@@ -130,7 +130,7 @@ LovokStatusCode ParseSkip(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           if (!strcmp(header.name, "udta")) {
               result = ParseSkipUdta(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseSkip: ";
+              std::cout << "Encountered unknown box while parsing 'skip' box: ";
               std::cout << header.name << std::endl;
           }
           return result;
@@ -149,7 +149,7 @@ LovokStatusCode ParseMeco(FileWrapper *fileWrapper, uint64_t length, uint64_t by
           if (!strcmp(header.name, "mere")) {
               result = ParseMere(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseMeco: ";
+              std::cout << "Encountered unknown box while parsing 'meco' box: ";
               std::cout << header.name << std::endl;
           }
           return result;

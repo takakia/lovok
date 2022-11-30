@@ -41,7 +41,7 @@ LovokStatusCode ParseMinf(FileWrapper * fileWrapper, uint64_t length, uint64_t b
           } else if (!strcmp(header.name, "stbl")) {
               result = ParseStbl(fileWrapper, header.size, byteOffset);
           } else {
-              std::cout << "Unknown box name in ParseMinf: ";
+              std::cout << "Encountered unknown box while parsing 'minf' box: ";
               std::cout << header.name << std::endl;
           }
           return result;
