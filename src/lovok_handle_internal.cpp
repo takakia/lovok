@@ -64,7 +64,7 @@ LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t b
 
         // Parse Boxes within this box with function f
         LovokStatusCode boxResult = f(header, byteOffset);
-        if (boxResult != VALID_FILE) {
+        if (boxResult != VALID_FILE && boxResult != UNKNOWN_BOX) {
             return boxResult;
         }
         // seek to next box
