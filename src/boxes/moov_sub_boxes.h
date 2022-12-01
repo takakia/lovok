@@ -15,4 +15,6 @@ LovokStatusCode ParseMoovMeta(FileWrapper *, uint64_t, uint64_t);
 
 LovokStatusCode ParseMvex(FileWrapper *, uint64_t, uint64_t);
 
+LovokStatusCode ParseMoovUdta(FileWrapper *, uint64_t, uint64_t);
+
 #endif //LOVOK_MOOV_SUB_BOXES_H

@@ -10,7 +10,7 @@ int main(int argc, char **argv) {
       return 1;
     }
     LovokStatusCode valid = valid_mp4(handle);
-    if (valid != SUCCESS) {
+    if (valid != VALID_FILE) {
         std::cout << "Error validating mp4 file" << std::endl;
         return 1;
     }

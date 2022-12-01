@@ -1,4 +1,5 @@
 #include <cstdlib>
+#include <iostream>
 #include "../include/lovok.h"
 #include "../libs/io/file_io.h"
 #include "lovok_handle_internal.h"
@@ -38,5 +39,9 @@ void Lovok_destroy(LOVOK_HANDLE h) {
 }
 
 LovokStatusCode valid_mp4(LOVOK_HANDLE h) {
-    return ParseMp4(h);
+    LovokStatusCode fileStatus = ParseMp4(h);
+    if (fileStatus == VALID_FILE || fileStatus == UNKNOWN_BOX) {
+        return VALID_FILE;
+    }
+    return fileStatus;
 }
