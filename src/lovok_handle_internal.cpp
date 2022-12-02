@@ -61,7 +61,7 @@ bool AddOverflow(uint64_t a, uint64_t b, uint64_t *result) {
 }
 
 bool SubtractUnderflow(uint64_t a, uint64_t b, uint64_t *result) {
-    if ((UINT64_MAX + a + 1) < b)
+    if (a < b)
         return false;
     *result = a - b;
     return true;
