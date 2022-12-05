@@ -5,7 +5,7 @@
 #include "lovok.h"
 
 int main(int argc, char **argv) {
-    const char *name = "test_data/test_sample_exploit_stsc.mp4";
+    const char *name = "test_data/test_sample_exploit_stsc_overflow.mp4";
     std::cout << "Parsing" << name << std::endl;
     FileWrapper *wrapper = FileWrapper_Open(name);
     if (!wrapper) {
