@@ -10,11 +10,10 @@
 #include "meco_sub_boxes.h"
 
 LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    byteOffset += 8;
-    length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
                length,
                byteOffset,
+               8,
                [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
         LovokStatusCode result = UNKNOWN_BOX;
         if (!strcmp(header.name, "trak")) {
@@ -37,11 +36,10 @@ LovokStatusCode ParseMoov(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseMoof(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    byteOffset += 8;
-    length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
                                               length,
                                               byteOffset,
+                                              8,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "mfhd")) {
@@ -60,11 +58,10 @@ LovokStatusCode ParseMoof(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseMeta(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    byteOffset += 8;
-    length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
                                               length,
                                               byteOffset,
+                                              8,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "hdlr")) {
@@ -99,11 +96,10 @@ LovokStatusCode ParseMeta(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseMfra(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    byteOffset += 8;
-    length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
                                               length,
                                               byteOffset,
+                                              8,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "tfra")) {
@@ -120,11 +116,10 @@ LovokStatusCode ParseMfra(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseSkip(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    byteOffset += 8;
-    length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
                                               length,
                                               byteOffset,
+                                              8,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "udta")) {
@@ -139,11 +134,10 @@ LovokStatusCode ParseSkip(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseMeco(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    byteOffset += 8;
-    length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
                                               length,
                                               byteOffset,
+                                              8,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "mere")) {

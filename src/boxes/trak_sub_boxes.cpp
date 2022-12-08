@@ -20,11 +20,10 @@ LovokStatusCode ParseTrgr(FileWrapper * fileWrapper, uint64_t length, uint64_t b
 }
 
 LovokStatusCode ParseEdts(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
-    byteOffset += 8;
-    length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
                                               length,
                                               byteOffset,
+                                              8,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "elst")) {
@@ -44,11 +43,10 @@ LovokStatusCode ParseTrakMeta(FileWrapper * fileWrapper, uint64_t length, uint64
 }
 
 LovokStatusCode ParseMdia(FileWrapper * fileWrapper, uint64_t length, uint64_t byteOffset) {
-    byteOffset += 8;
-    length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
                                               length,
                                               byteOffset,
+                                              8,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "mdhd")) {
