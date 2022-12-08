@@ -8,6 +8,9 @@
 
 typedef struct LovokHandleInternal {
     FileWrapper *wrapper;
+
+    void (*log_callback)(void *ctx, const char *msg, size_t n);
+    void *log_context;
 } *LOVOK_HANDLE_INTERNAL;
 
 LovokStatusCode ParseBoxes(FileWrapper *, uint64_t, uint64_t, const std::function<LovokStatusCode(const Box &, uint64_t)> &);

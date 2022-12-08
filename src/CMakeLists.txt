@@ -1,4 +1,5 @@
 add_library(lovok_internal
+        log.cpp
         lovok.cpp
         lovok_handle_internal.cpp
         boxes/box.cpp
