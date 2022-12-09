@@ -3,30 +3,6 @@ add_library(lovok_internal
         lovok_handle_internal.cpp
         boxes/box.cpp
         boxes/box.h
-        boxes/file_type_box.cpp
-        boxes/file_type_box.h
-        boxes/sample_to_chunk_box.h
-        boxes/sample_to_chunk_box.cpp
-        boxes/sample_size_box.h
-        boxes/sample_size_box.cpp
-        boxes/meta_box.h
-        boxes/meta_box.cpp
-        boxes/full_box.h
-        boxes/full_box.cpp
-        boxes/movie_box.h
-        boxes/movie_box.cpp
-        boxes/movie_fragment_random_access_box.h
-        boxes/movie_fragment_random_access_box.cpp
-        boxes/movie_header_box.h
-        boxes/movie_header_box.cpp
-        boxes/progressive_download_info_box.cpp
-        boxes/progressive_download_info_box.h
-        boxes/movie_fragment_box.cpp
-        boxes/movie_fragment_box.h
-        boxes/media_data_box.h
-        boxes/media_data_box.cpp
-        boxes/time_to_sample_box.h
-        boxes/time_to_sample_box.cpp
         lovok_handle_internal.h
         boxes/file_level_boxes.h
         boxes/file_level_boxes.cpp
