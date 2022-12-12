@@ -67,12 +67,12 @@ bool SubtractUnderflow(uint64_t a, uint64_t b, uint64_t *result) {
     return true;
 }
 
-LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset, uint64_t offset, const std::function<LovokStatusCode(const Box &, uint64_t)> &f) {
-    if (!AddOverflow(byteOffset, offset, &byteOffset)) {
+LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset, uint64_t headerSize, const std::function<LovokStatusCode(const Box &, uint64_t)> &f) {
+    if (!AddOverflow(byteOffset, headerSize, &byteOffset)) {
         return INVALID_FILE;
     }
 
-    if (!SubtractUnderflow(length, offset, &length)) {
+    if (!SubtractUnderflow(length, headerSize, &length)) {
         return INVALID_FILE;
     }
     while (length > 0) {
@@ -92,6 +92,13 @@ LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t b
         if (err != 0) {
             return PARSE_ERROR;
         }
+        if (!AddOverflow(byteOffset, headerSize, &byteOffset)) {
+            return INVALID_FILE;
+        }
+
+        if (!SubtractUnderflow(length, headerSize, &length)) {
+            return INVALID_FILE;
+        }
     }
     return VALID_FILE;
 }
@@ -103,7 +110,7 @@ LovokStatusCode ParseMp4(LOVOK_HANDLE_INTERNAL handle) {
     }
     uint64_t length = FileWrapper_Size(fileWrapper);
     uint64_t byteOffset = 0;
-    LovokStatusCode parseResults = ParseBoxes(fileWrapper, length, byteOffset, 8,
+    LovokStatusCode parseResults = ParseBoxes(fileWrapper, length, byteOffset, 0,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
         // TODO add logic for Moov and other top level boxes
         LovokStatusCode result = UNKNOWN_BOX;
