@@ -92,11 +92,11 @@ LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t b
         if (err != 0) {
             return PARSE_ERROR;
         }
-        if (!AddOverflow(byteOffset, headerSize, &byteOffset)) {
+        if (!AddOverflow(byteOffset, header.size, &byteOffset)) {
             return INVALID_FILE;
         }
 
-        if (!SubtractUnderflow(length, headerSize, &length)) {
+        if (!SubtractUnderflow(length, header.size, &length)) {
             return INVALID_FILE;
         }
     }
