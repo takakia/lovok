@@ -11,11 +11,10 @@ LovokStatusCode ParseHdlr(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseDinf(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    byteOffset += 8;
-    length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
                                               length,
                                               byteOffset,
+                                              8,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "dref")) {
@@ -35,11 +34,10 @@ LovokStatusCode ParseIloc(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseIpro(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    byteOffset += 8;
-    length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
                                               length,
                                               byteOffset,
+                                              8,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "sinf")) {
@@ -74,11 +72,10 @@ LovokStatusCode ParsePitm(FileWrapper *fileWrapper, uint64_t length, uint64_t by
 }
 
 LovokStatusCode ParseFiin(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset) {
-    byteOffset += 8;
-    length -= 8;
     LovokStatusCode parseResults = ParseBoxes(fileWrapper,
                                               length,
                                               byteOffset,
+                                              8,
                                               [&fileWrapper] (const Box &header, uint64_t byteOffset) -> LovokStatusCode {
           LovokStatusCode result = UNKNOWN_BOX;
           if (!strcmp(header.name, "paen")) {
