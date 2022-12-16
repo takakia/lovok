@@ -53,52 +53,58 @@ LovokStatusCode ParseHeader(FileWrapper *fileWrapper, Box *header) {
     return VALID_FILE;
 }
 
-bool AddOverflow(uint64_t a, uint64_t b, uint64_t *result) {
+bool OverflowCheck(uint64_t a, uint64_t b) {
     if ((UINT64_MAX - a) < b)
         return false;
-    *result = a + b;
+    return true;
+}
+bool AddOverflow(uint64_t a, uint64_t b, uint64_t *result) {
+    bool valid = OverflowCheck(a, b);
+    if (valid)
+        *result = a + b;
+    return valid;
+}
+
+bool UnderflowCheck(uint64_t a, uint64_t b) {
+    if (a < b)
+        return false;
     return true;
 }
 
 bool SubtractUnderflow(uint64_t a, uint64_t b, uint64_t *result) {
-    if (a < b)
-        return false;
-    *result = a - b;
-    return true;
+    bool valid = UnderflowCheck(a, b);
+    if (valid)
+        *result = a - b;
+    return valid;
 }
 
 LovokStatusCode ParseBoxes(FileWrapper *fileWrapper, uint64_t length, uint64_t byteOffset, uint64_t headerSize, const std::function<LovokStatusCode(const Box &, uint64_t)> &f) {
-    if (!AddOverflow(byteOffset, headerSize, &byteOffset)) {
+    if (!AddOverflow(byteOffset, headerSize, &byteOffset))
         return INVALID_FILE;
-    }
+    if (!SubtractUnderflow(length, headerSize, &length))
+        return INVALID_FILE;
 
-    if (!SubtractUnderflow(length, headerSize, &length)) {
-        return INVALID_FILE;
-    }
     while (length > 0) {
         Box header = Box();
         LovokStatusCode parsedHeader = ParseHeader(fileWrapper, &header);
-        if (parsedHeader != VALID_FILE) {
+        if (parsedHeader != VALID_FILE)
             return PARSE_ERROR;
-        }
+        if (!OverflowCheck(byteOffset, header.size))
+            return INVALID_FILE;
+        if (!UnderflowCheck(length, header.size))
+            return INVALID_FILE;
 
         // Parse Boxes within this box with function f
         LovokStatusCode boxResult = f(header, byteOffset);
-        if (boxResult != VALID_FILE && boxResult != UNKNOWN_BOX) {
+        if (boxResult != VALID_FILE && boxResult != UNKNOWN_BOX)
             return boxResult;
-        }
+
         // seek to next box
         int err = FileWrapper_Seek(fileWrapper, byteOffset + header.size);
-        if (err != 0) {
+        if (err != 0)
             return PARSE_ERROR;
-        }
-        if (!AddOverflow(byteOffset, header.size, &byteOffset)) {
-            return INVALID_FILE;
-        }
-
-        if (!SubtractUnderflow(length, header.size, &length)) {
-            return INVALID_FILE;
-        }
+        byteOffset += header.size;
+        length -= header.size;
     }
     return VALID_FILE;
 }
